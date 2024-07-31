@@ -9,7 +9,6 @@
 import PropTypes from 'prop-types';
 import { useCallback, useState } from 'react';
 import { MyContext } from './context';
-/* import { SessionProvider } from 'next-auth/react'; */
 
 function Container({ children }) {
   // Variable refers to the icon with the symbol 'D'

@@ -170,16 +170,18 @@ body {
   color: var(--color-white);
   margin: 0;
 
-  /* Para o Webkit (Safari e Chrome) */
-  ::-webkit-scrollbar {
-    display: none;
+  /* Estilos de scrollbar */
+  -ms-overflow-style: none; /* Para o IE e Edge */
+  scrollbar-width: none; /* Para Firefox */
+
+  & {
+    scrollbar-width: none; /* For Firefox */
   }
 
-  /* Para o IE e Edge */
-  -ms-overflow-style: none;
-
-  /* Para Firefox */
-  scrollbar-width: none;
+  /* Para o Webkit (Safari e Chrome) */
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 a {

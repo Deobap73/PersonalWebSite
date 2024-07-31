@@ -25,6 +25,9 @@ const NavigationBar = ({ context }) => {
   const onBlogClick = useCallback(() => {
     navigate('/blog');
   }, [navigate]);
+  const onSignUpClick = useCallback(() => {
+    navigate('/signUp');
+  }, [navigate]);
 
   return (
     <nav className='navigationBar'>
@@ -97,6 +100,10 @@ const NavigationBar = ({ context }) => {
               <span onClick={() => setStatus('notAuthenticated')}>Logout</span>
             </>
           )}
+          <b className='b'>|</b>
+          <span className='about' onClick={onSignUpClick}>
+            Sign Up
+          </span>
         </>
       )}
     </nav>

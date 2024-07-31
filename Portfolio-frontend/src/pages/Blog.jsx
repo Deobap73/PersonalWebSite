@@ -1,8 +1,8 @@
 // src/pages/Blog.jsx
 
 import { Helmet } from 'react-helmet';
-import BlogPage from '../components/Blog/BlogPage';
-import BlogMain from '../components/Blog/presentation/BlogMain';
+import BlogMain from '../components/Blog/Pages/BlogMain';
+import { BlogPage } from '../components/Blog/Pages/BlogPage';
 import Footer from '../components/Footer/Footer';
 import './Blog.scss';
 
@@ -32,7 +32,7 @@ const Blog = () => {
         <h1 className='my-blog'>My Blog</h1>
       </section>
       <BlogMain />
-      {/* <BlogPage /> */}
+      <BlogPage />
       <Footer />
     </div>
   );
