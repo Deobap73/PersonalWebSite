@@ -1,0 +1,40 @@
+.slider {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  .slides-container-overflow {
+    overflow: hidden;
+    height: 100%;
+
+    .slides-container {
+      display: flex;
+      height: 100%;
+      transition: transform ease-out 0.3s;
+      .slide {
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+        background-size: cover;
+        background-position: center;
+      }
+    }
+  }
+  .dots-container {
+    display: flex;
+    justify-content: center;
+    .dot {
+      margin: 15px 20px;
+      width: 80px;
+      height: 3px;
+      border-radius: 10px;
+      background-color: #fffefc;
+    }
+    .dot-active {
+      margin: 15px 20px;
+      width: 80px;
+      height: 3px;
+      border-radius: 10px;
+      background-color: #aa9751;
+    }
+  }
+}

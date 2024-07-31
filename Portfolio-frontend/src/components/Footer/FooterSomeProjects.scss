@@ -1,0 +1,43 @@
+// src/components/FooterSomeProjects.scss
+
+.someprojects1 {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: flex-start;
+  overflow: hidden;
+  width: 15rem;
+  padding: var(--padding-7xs) var(--padding-6xs);
+  gap: var(--gap-7xs) 0;
+  .some-projects1 {
+    margin: 0;
+    position: relative;
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    font-family: var(--font-cormorant-garamond);
+    background: linear-gradient(180deg, rgba(192, 173, 90, 0.87), #b98e53);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+    flex-shrink: 0;
+  }
+  .firstproject1 {
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0 var(--gap-10xs);
+    color: var(--color-white);
+    .dot-circle-icon {
+      width: 1.25rem;
+      height: 1.25rem;
+      overflow: hidden;
+      flex-shrink: 0;
+      position: relative;
+    }
+    .first-project1 {
+      position: relative;
+    }
+  }
+}

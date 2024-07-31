@@ -1,0 +1,10 @@
+// src/components/FooterComponentBox.scss
+
+.deobutton-group {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--gap-4xl);
+}

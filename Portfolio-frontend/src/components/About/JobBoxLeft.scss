@@ -1,0 +1,76 @@
+.jobBoxLeft {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  width: 100%;
+  gap: var(--gap-14xl);
+  padding: clamp(1rem, 2vw, 0.5rem);
+  text-align: right;
+  font-size: clamp(var(--font-size-3xs), 1vw + 1rem, var(--font-size-base));
+
+  .jobBoxLeftContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 100%;
+    gap: 0.625rem 0;
+
+    .jobBoxLeftTitle {
+      width: 100%;
+      font-size: inherit;
+      font-weight: 700;
+    }
+
+    .jobBoxLeftDate {
+      width: 100%;
+      font-size: inherit;
+      font-weight: 400;
+      background: linear-gradient(180deg, rgba(192, 173, 90, 0.87), #b98e53);
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      -webkit-text-stroke: 1px transparent;
+    }
+
+    .jobBoxLeftListContainer {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-end;
+      justify-content: flex-start;
+      width: 100%;
+
+      display: inline-block;
+
+      .jobBoxLeftListContainerTitle {
+        width: 100%;
+
+        .jobBoxLeftListDiscrimination {
+          margin-bottom: false;
+        }
+      }
+    }
+  }
+
+  .jobBoxLeft-child {
+    width: 0.375rem;
+    border-radius: 50%;
+    background-color: var(--color-gainsboro);
+    height: 0.375rem;
+  }
+}
+
+/* Media queries */
+
+@media (max-width: 768px) {
+  .jobBoxLeft {
+    text-align: Right;
+    margin-block: clamp(2rem, 2vw, 0.5rem);
+
+    .jobBoxLeft-child {
+      order: -1;
+    }
+
+    .jobBoxLeftContainer {
+      order: 1;
+    }
+  }
+}

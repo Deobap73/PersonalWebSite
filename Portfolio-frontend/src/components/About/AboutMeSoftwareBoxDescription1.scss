@@ -1,0 +1,26 @@
+.figma-icon {
+  width: 2.081rem;
+  position: relative;
+  height: 3.125rem;
+}
+.figma-expertise-is {
+  margin: 0;
+  width: 22.75rem;
+  position: relative;
+  display: inline-block;
+  flex-shrink: 0;
+}
+.aboutmesoftwareboxdescription {
+  align-self: stretch;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 var(--padding-xl);
+  gap: 0 1.5rem;
+  text-align: center;
+  font-size: var(--font-size-base);
+  color: var(--color-white);
+  font-family: var(--font-cormorant-garamond);
+}

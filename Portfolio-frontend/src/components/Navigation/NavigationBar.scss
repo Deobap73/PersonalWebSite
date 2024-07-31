@@ -1,0 +1,24 @@
+// src/components/NavigationBar.scss
+
+.navigationBar {
+  margin-block: min(5vw, var(--padding-13xl));
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: flex-start;
+  gap: 0 1.375rem;
+  text-align: center;
+  font-size: var(--font-size-base);
+  font-size: clamp(0.5rem, 1vw + 0.5rem, var(--font-size-base));
+  color: var(--color-white);
+  font-family: var(--font-cormorant-garamond);
+  .about {
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+    .b {
+      position: relative;
+    }
+  }
+}

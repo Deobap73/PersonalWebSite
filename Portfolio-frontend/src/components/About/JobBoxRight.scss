@@ -1,0 +1,85 @@
+/* Portfolio-green\src\components\About\JobBoxRight.scss*/
+
+.jobBoxRight {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: var(--gap-14xl);
+  text-align: left;
+  font-size: clamp(var(--font-size-3xs), 1vw + 1rem, var(--font-size-base));
+
+  .jobBoxRight-child {
+    width: 0.375rem;
+    height: 0.375rem;
+    border-radius: 50%;
+    background-color: var(--color-gainsboro);
+  }
+
+  .management-advisor-and-response-parent {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+    gap: 0.625rem 0;
+    padding: clamp(1rem, 2vw, 0.5rem);
+
+    .january-2018-,
+    .management-advisor-and {
+      margin: 0;
+      width: 100%;
+      position: relative;
+      font-size: inherit;
+      font-weight: 700;
+      font-family: inherit;
+      display: inline-block;
+    }
+    .january-2018- {
+      width: 100%;
+      font-size: inherit;
+      font-weight: 400;
+      background: linear-gradient(180deg, rgba(192, 173, 90, 0.87), #b98e53);
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      -webkit-text-stroke: 1px transparent;
+    }
+
+    .client-focus-and-strong-commit-wrapper {
+      margin: 0;
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: flex-start;
+
+      .client-focus-and-container {
+        width: 100%;
+        position: relative;
+        display: inline-block;
+        flex-shrink: 0;
+
+        .client-focus-and-strong-commit {
+          margin: 0;
+          font-family: inherit;
+          font-size: inherit;
+          padding-left: var(--padding-13xl);
+
+          .client-focus-and {
+            margin-bottom: false;
+          }
+        }
+
+        .blank-line11 {
+          margin: 0;
+        }
+      }
+    }
+  }
+}
+
+/* Media queries */
+
+@media (max-width: 768px) {
+  .jobBoxRight {
+    text-align: Right;
+  }
+}

@@ -1,0 +1,111 @@
+.aboutMeResumeBox {
+  display: grid;
+  grid-template-columns: 1fr 0.01fr 1fr;
+  grid-template-rows: auto;
+  gap: 0.8rem;
+  grid-template-areas:
+    '. TimeLine work-experience'
+    'JobBoxLeft1 . .'
+    '. . JobBoxRight'
+    'JobBoxLeft2 . .'
+    'education TimeLine1 .'
+    '. . EducationBoxRight'
+    '. TimeLine2 language'
+    'LanguageBoxLeft1 . .'
+    '. . LanguageBoxRight1'
+    'LanguageBoxLeft2 . .'
+    '. . LanguageBoxRight2'
+    'LanguageBoxLef3 . .';
+}
+
+.work-experience {
+  grid-area: work-experience;
+  text-align: left;
+}
+
+.JobBoxLeft1 {
+  grid-area: JobBoxLeft1;
+}
+
+.JobBoxRight {
+  grid-area: JobBoxRight;
+  display: flex;
+}
+
+.JobBoxLeft2 {
+  grid-area: JobBoxLeft2;
+}
+
+.education {
+  grid-area: education;
+  text-align: right;
+}
+
+.EducationBoxRight {
+  grid-area: EducationBoxRight;
+}
+
+.language {
+  grid-area: language;
+  text-align: left;
+}
+
+.LanguageBoxLeft1 {
+  grid-area: LanguageBoxLeft1;
+}
+
+.LanguageBoxRight1 {
+  grid-area: LanguageBoxRight1;
+}
+
+.LanguageBoxLeft2 {
+  grid-area: LanguageBoxLeft2;
+}
+
+.LanguageBoxRight2 {
+  grid-area: LanguageBoxRight2;
+}
+
+.LanguageBoxLef3 {
+  grid-area: LanguageBoxLef3;
+}
+
+.TimeLine {
+  grid-area: TimeLine;
+  position: relative;
+}
+
+.TimeLine1 {
+  grid-area: TimeLine1;
+}
+
+.TimeLine2 {
+  grid-area: TimeLine2;
+}
+
+/* Media queries */
+
+@media (max-width: 768px) {
+  .aboutMeResumeBox {
+    grid-template-columns: 0.01fr 1fr;
+    gap: 3rem 0.8rem;
+    grid-template-areas:
+      'TimeLine work-experience'
+      '. JobBoxLeft1'
+      '. JobBoxRight'
+      '. JobBoxLeft2'
+      'TimeLine1 education'
+      '. EducationBoxRight'
+      'TimeLine2 language'
+      '. LanguageBoxLeft1'
+      '. LanguageBoxRight1'
+      '. LanguageBoxLeft2'
+      '. LanguageBoxRight2'
+      '. LanguageBoxLef3';
+    .work-experience,
+    .education,
+    .language {
+      text-align: left;
+    }
+  }
+}

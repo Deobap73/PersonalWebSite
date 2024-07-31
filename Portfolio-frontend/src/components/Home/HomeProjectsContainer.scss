@@ -1,0 +1,24 @@
+/* src/components/HomeProjectsContainer.scss */
+
+.homeprojectscontainer {
+  display: flex;
+  align-items: flex-end;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: auto;
+  background-color: var(--background-GreenDown);
+  box-shadow: var(--shadowboxes);
+
+  .homeprojectscontainer-inner {
+    display: flex;
+    justify-content: center;
+    padding-block: clamp(1rem, 8.5vw, 5rem);
+    width: 93%;
+    height: 100%;
+    cursor: pointer;
+    font-size: var(--font-size-base);
+    color: var(--color-white);
+    font-family: var(--font-cormorant-garamond);
+  }
+}

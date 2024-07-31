@@ -1,0 +1,12 @@
+/* src/components/ProjectsTheOthersProjects.scss */
+
+.projectsThe-othersProjects {
+  align-self: stretch;
+  min-height: 100rem;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  padding: 0 var(--padding-12xs) 0 0;
+}

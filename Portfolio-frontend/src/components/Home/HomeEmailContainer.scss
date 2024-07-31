@@ -1,0 +1,106 @@
+/* src/components/HomeEmailContainer.scss */
+
+.emailContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  max-width: 43.688rem;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  box-sizing: border-box;
+  font-size: var(--font-size-base);
+  font-family: var(--font-cormorant-garamond);
+  text-align: center;
+  color: var(--color-white);
+  background-color: var(--boxbackgroundgreendark);
+  box-shadow: 0 4px 20px 3px #0b0e0f;
+  padding: clamp(2rem, 2vw, 0.5rem);
+
+  .emailContact {
+    display: flex;
+    align-items: flex-start;
+    max-width: 39.88rem;
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: var(--margin-xl);
+    .contactInformation {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      margin: 0;
+      font-size: var(--font-size-base);
+      font-weight: 700;
+      font-family: var(--font-cormorant-garamond);
+      text-align: left;
+      width: 12rem;
+      height: 1.06rem;
+    }
+  }
+
+  .your-message-here {
+    max-width: 25rem;
+    min-width: 12rem;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin: 2rem 0;
+
+    font-size: var(--font-size-base);
+    font-weight: 700;
+    font-family: var(--font-cormorant-garamond);
+    color: var(--color-white);
+    text-align: left;
+  }
+
+  .button {
+    margin: 1.2rem 0;
+    border-radius: var(--br-9xs);
+    background: linear-gradient(
+      180deg,
+      rgba(192, 173, 90, 0.87),
+      hsl(35, 42%, 53%)
+    );
+    flex-direction: row;
+    padding: var(--padding-11xs) var(--padding-8xs);
+  }
+
+  .button:hover {
+    cursor: pointer;
+  }
+
+  .button.clicked {
+    /* Styles when button is clicked */
+    background-color: linear-gradient(
+      180deg,
+      rgba(100, 90, 47, 0.87),
+      hsl(36, 38%, 27%)
+    );
+  }
+}
+
+input,
+textarea {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: none;
+  border-bottom: 1px solid #b98e53;
+  outline: none;
+  box-shadow: none;
+  background: none;
+  color: white;
+}
+
+/* Optional style to remove blue border on focus (some browsers only) */
+input:focus {
+  outline: none;
+}

@@ -1,0 +1,40 @@
+/* src/components/AboutMeLineOfTime.scss */
+
+.aboutMeLineOfTime {
+  position: absolute;
+  width: 40.513rem;
+  height: 150.531rem;
+  margin: 0 !important;
+  top: 28.8rem;
+  left: 11rem;
+  z-index: 1;
+  .graduationLine-icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40.513rem;
+    height: 139.906rem;
+  }
+}
+
+/* Media queries */
+@media (max-width: 1180px) {
+  .aboutMeLineOfTime {
+    top: 29rem;
+    left: 11rem;
+    height: 232.531rem;
+    .graduationLine-icon {
+      height: 231.6rem;
+    }
+  }
+}
+@media (max-width: 768px) {
+  .aboutMeLineOfTime {
+    top: 25.363rem;
+    left: -1.825rem;
+    height: 232.531rem;
+    .graduationLine-icon {
+      height: 229.6rem;
+    }
+  }
+}

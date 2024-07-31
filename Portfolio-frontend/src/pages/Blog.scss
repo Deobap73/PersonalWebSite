@@ -1,0 +1,32 @@
+/* src/pages/Blog.scss */
+
+.blog {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  background: var(--background-general);
+  height: 100vh;
+  overflow: hidden;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 0 var(--padding-138xl);
+  padding-inline: min(5vw, var(--padding-138xl));
+  box-sizing: border-box;
+  .blogPresentationName {
+    display: flex;
+    align-items: center;
+    min-height: 12rem;
+    height: auto;
+    flex-direction: row;
+    justify-content: center;
+
+    .my-blog {
+      margin: 0;
+      position: relative;
+      font-size: clamp(1.75rem, 5vw + 1rem, 6.13rem);
+      font-weight: 700;
+      font-family: inherit;
+    }
+  }
+}

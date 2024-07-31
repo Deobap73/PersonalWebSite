@@ -1,0 +1,21 @@
+/* Portfolio-green\src\components\About\AboutMeSkillsContainer.scss */
+
+.aboutMeSkillsContainer {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  max-width: 70.313rem;
+  width: 100%;
+  height: auto;
+  background: linear-gradient(
+    -11.07deg,
+    #0b0e0f,
+    #13191b 23.99%,
+    #1a2528 53.82%,
+    #0b0e0f
+  );
+  box-shadow: var(--shadowboxes);
+  overflow: hidden;
+  gap: var(--gap-lg);
+}

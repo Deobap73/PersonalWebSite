@@ -1,0 +1,134 @@
+/* Portfolio-green\src\components\About\AboutMeWelcomeContainer.scss */
+
+.aboutMeWelcomeContainer {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: var(--padding-8xs) 0;
+  gap: var(--gap-2xl);
+  text-align: left;
+  width: 100%;
+
+  .aboutMeWelcomeContainerDescription {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 28.5rem;
+    width: 100%;
+    gap: var(--gap-xl);
+    padding: clamp(1rem, 2vw, 0.5rem);
+    .aboutMeWelcomeContainerDescription1 {
+      padding: 0 var(--padding-136xl) 0 0;
+      .hi-there-welcome {
+        font-size: clamp(
+          var(--font-size-base),
+          2vw + 1rem,
+          var(--font-size-25xl)
+        );
+        font-weight: 700;
+      }
+      .junior-full-stack {
+        font-size: clamp(
+          var(--font-size-3xs),
+          1vw + 0.5rem,
+          var(--font-size-base)
+        );
+        font-style: italic;
+        font-weight: 300;
+        background: linear-gradient(180deg, rgba(192, 173, 90, 0.87), #b98e53);
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        -webkit-text-stroke: 1px transparent;
+        text-shadow: 4px 4px 5px #393939;
+      }
+    }
+    .a-technology-enthusiast-container {
+      max-width: 27.5rem;
+      width: 100%;
+      font-weight: 300;
+      font-size: clamp(
+        var(--font-size-base),
+        1vw + 0.5rem,
+        var(--font-size-lg)
+      );
+    }
+    .aboutMeWelcomeContainerContact {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      gap: var(--gap-xl);
+      font-size: var(--font-size-base);
+      .aboutMeWelcomeContainerContacts {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-between;
+        width: 100%;
+        gap: 0.188rem 0;
+        font-size: clamp(
+          var(--font-size-1xs),
+          1vw + 0.75rem,
+          var(--font-size-base)
+        );
+        .call-to-me {
+          font-weight: 300;
+          background: linear-gradient(
+            180deg,
+            rgba(192, 173, 90, 0.87),
+            #b98e53
+          );
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          -webkit-text-stroke: 1px transparent;
+          white-space: pre-wrap;
+          max-width: 140px;
+          width: 100%;
+        }
+        .p1 {
+          font-family: var(--font-arial);
+          font-size: clamp(
+            var(--font-size-1xs),
+            1vw + 0.5rem,
+            var(--font-size-base)
+          );
+        }
+        .portuguese-english {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: flex-end;
+          max-width: 240px;
+          width: 100%;
+          font-weight: 300;
+          text-align: right;
+        }
+      }
+    }
+  }
+  .button1 {
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 8.875rem;
+    margin-top: var(--margin-14xl);
+    border: 1px solid var(--boxbackgroundgreenlight);
+    padding: var(--padding-3xs);
+    background-color: var(--background-transparent);
+    border-radius: var(--br-6xl);
+    box-shadow: 0 2px 0#0b1213;
+    box-sizing: border-box;
+  }
+  .curriculumButton {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    .curriculum {
+      position: relative;
+      font-size: var(--font-size-base);
+      font-family: var(--font-cormorant-garamond);
+      color: var(--color-white);
+      text-align: center;
+    }
+  }
+}

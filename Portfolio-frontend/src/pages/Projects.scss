@@ -1,0 +1,41 @@
+/* src/pages/Projects.scss*/
+
+.projects {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+  height: auto;
+  background: var(--background-general);
+  overflow: hidden;
+  padding: 0 var(--padding-138xl);
+  padding-inline: min(5vw, var(--padding-138xl));
+  box-sizing: border-box;
+
+  .projectspresentationname {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    padding: var(--padding-81xl) 0;
+    gap: var(--gap-8xl);
+
+    .projectsSentence {
+      font-size: clamp(var(--font-size-3xs), 2vw + 1rem, var(--font-size-40xl));
+      font-weight: 700;
+      text-align: center;
+      .take-a-look {
+        font-size: 90%;
+      }
+      .my-projects {
+        background: linear-gradient(180deg, rgba(192, 173, 90, 0.87), #b98e53);
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        -webkit-text-stroke: 1px transparent;
+      }
+    }
+  }
+}

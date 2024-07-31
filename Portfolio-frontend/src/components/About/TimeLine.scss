@@ -1,0 +1,21 @@
+// src/components/TimeLine.scss
+
+.timeline {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2.875rem;
+  height: 2.875rem;
+  border-radius: 50%;
+  background: linear-gradient(180deg, rgba(192, 173, 90, 0.87), #b98e53);
+}
+
+.briefcase-icon,
+.graduation-icon,
+.comments-icon {
+  width: 60%;
+  height: auto;
+  max-width: 60%;
+  max-height: 60%;
+  z-index: 2;
+}

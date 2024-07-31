@@ -1,0 +1,237 @@
+/* src/global.scss*/
+
+:root {
+  /* fonts */
+  --font-cormorant-garamond: 'Cormorant Garamond';
+  --font-inherit: inherit;
+  --font-arial: Arial;
+
+  /* font sizes */
+  --font-size-3xs: 0.63rem;
+  --font-size-1xs: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lgi: 1.188rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-5xl: 1.5rem;
+  --font-size-175xl: 1.75rem;
+  --font-size-20xl: 2rem;
+  --font-size-25xl: 2.25rem;
+  --font-size-30xl: 3rem;
+  --font-size-35xl: 3.5rem;
+  --font-size-40xl: 4rem;
+  --font-size-45xl: 4.5rem;
+  --font-size-50xl: 5rem;
+  --font-size-79xl: 6.13rem;
+
+  /* Colors */
+  --color-white: #fff;
+  --color-black: #000000;
+  --color-grayLight: #b1aeae;
+  --color-gray-100: rgba(0, 0, 0, 0);
+  --color-gainsboro: #d9d9d9;
+  --color-cadetblue: rgba(81, 130, 138, 0.11);
+  --color-slategray: rgba(81, 129, 138, 0.11);
+  --color-darkslategray-100: #393939;
+  --color-gold: #b98e53;
+  --color-Blog-Tittle: #3cff00;
+  --boxbackgroundgreendark: #141a1c;
+  --boxbackgroundgreenlight: #36484c;
+  --backgroundProgramming: #ff7857;
+  --backgroundDesign: #ffb14f;
+  --backgroundTechnology: #7fb881;
+  --backgroundEmerging: #ff7887;
+  --backgroundPersonalDevelopment: #789cff;
+  --backgroundCategoriesProgramming: #57c4ff31;
+  --backgroundCategoriesDesign: #da85c731;
+  --backgroundCategoriesTechnology: #ff795736;
+  --backgroundCategoriesEmerging: #ffb04f45;
+  --backgroundCategoriesPersonalDevelopment: #5e4fff31;
+  --background-general: linear-gradient(
+    167.5deg,
+    #13191b,
+    #1a2528 48.44%,
+    #0b0e0f
+  );
+  --background-GreenUp: linear-gradient(
+    223.4deg,
+    #13191b,
+    #1a2528 48.44%,
+    #0b0e0f
+  );
+  --background-GreenDown: linear-gradient(
+    352deg,
+    #13191b,
+    #1a2528 48.44%,
+    #0b0e0f
+  );
+  --background-gold: linear-gradient(180deg, rgba(192, 173, 90, 0.87), #b98e53);
+  --background-transparent: transparent;
+
+  /* Gaps */
+  --gap-12xs: 0.06rem;
+  --gap-11xs: 0.125rem;
+  --gap-10xs: 0.19rem;
+  --gap-9xs: 0.25rem;
+  --gap-7xs: 0.38rem;
+  --gap-5xs: 0.5rem;
+  --gap-3xs: 0.625rem;
+  --gap-2xs: 0.69rem;
+  --gap-sm: 0.88rem;
+  --gap-mini: 0.94rem;
+  --gap-base: 1rem;
+  --gap-xl: 1.25rem;
+  --gap-3xl: 1.38rem;
+  --gap-4xl: 1.44rem;
+  --gap-5xl: 1.5rem;
+  --gap-6xl: 1.56rem;
+  --gap-7xl: 1.63rem;
+  --gap-8xl: 1.69rem;
+  --gap-875xl: 1.875rem;
+  --gap-14xl: 2.06rem;
+  --gap-20xl: 2.44rem;
+  --gap-31xl: 3.125rem;
+  --gap-51xl: 4.38rem;
+  --gap-80xl: 6.19rem;
+
+  /* Paddings */
+  --padding-11xs: 0.13rem;
+  --padding-9xs: 0.25rem;
+  --padding-8xs: 0.31rem;
+  --padding-7xs: 0.38rem;
+  --padding-6xs: 0.44rem;
+  --padding-5xs: 0.5rem;
+  --padding-mini: 0.94rem;
+  --padding-smi: 0.81rem;
+  --padding-3xs: 0.625rem;
+  --padding-base: 1rem;
+  --padding-13xl: 1.31rem;
+  --padding-xl: 1.25rem;
+  --padding-6xl: 1.563rem;
+  --padding-6xl: 1.563rem;
+  --padding-2xl: 2rem;
+  --padding-31xl: 3.125rem;
+  --padding-46xl: 4.06rem;
+  --padding-50xl: 5rem;
+  --padding-81xl: 6.25rem;
+  --padding-138xl: 9.7rem;
+
+  /* Margin */
+  --margin-12xs: 0.06rem;
+  --margin-11xs: 0.13rem;
+  --margin-10xs: 0.19rem;
+  --margin-9xs: 0.25rem;
+  --margin-7xs: 0.38rem;
+  --margin-5xs: 0.5rem;
+  --margin-3xs: 0.625rem;
+  --margin-2xs: 0.69rem;
+  --margin-sm: 0.88rem;
+  --margin-mini: 0.94rem;
+  --margin-base: 1rem;
+  --margin-xl: 1.25rem;
+  --margin-3xl: 1.38rem;
+  --margin-4xl: 1.44rem;
+  --margin-5xl: 1.5rem;
+  --margin-6xl: 1.56rem;
+  --margin-7xl: 1.63rem;
+  --margin-8xl: 1.69rem;
+  --margin-875xl: 1.875rem;
+  --margin-2xl: 2rem;
+  --margin-218xl: 2.188rem;
+  --margin-20xl: 2.44rem;
+  --margin-31xl: 3.125rem;
+  --margin-375xl: 3.75rem;
+  --margin-43xl: 4.38rem;
+  --margin-50xl: 5rem;
+  --margin-80xl: 6.19rem;
+
+  /* Border radiuses */
+  --br-9xs: 4px;
+  --br-3xs: 10px;
+  --br-6xl: 25px;
+
+  /* Effects */
+  --shadowboxes: 0px 4px 72px 20px #0b0e0f;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  border: 0;
+  max-width: 100vw;
+  min-height: 100vh;
+  line-height: normal;
+  font-family: 'Arial', sans-serif;
+  font-family: 'Cormorant Garamond', sans-serif;
+  color: var(--color-white);
+  margin: 0;
+
+  /* Para o Webkit (Safari e Chrome) */
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Para o IE e Edge */
+  -ms-overflow-style: none;
+
+  /* Para Firefox */
+  scrollbar-width: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@font-face {
+  font-family: 'Cormorant Garamond';
+  src: url('./Fonts/CormorantGaramond-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Arial';
+  src: url('./Fonts/ARIAL.TTF') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+// to editor inside cloud container
+
+.ql-container {
+  font-size: 28px !important;
+}
+
+.quill > .ql-container > .ql-editor.ql-blank::before {
+  color: #b3b3b1 !important;
+  content: attr(data-placeholder) !important;
+}
+
+.ql-toolbar {
+  display: flex;
+  justify-content: space-around;
+  width: fit-content;
+  padding: 0 5px;
+  border-radius: 20px;
+  background-color: #36484c;
+}
+
+.ql-bold,
+.ql-active,
+.ql-italic,
+.ql-link,
+.ql-header,
+.ql-blockquote {
+  margin: 0 2px;
+  background-color: transparent;
+  border-radius: 50%;
+  border: 1px solid black;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}

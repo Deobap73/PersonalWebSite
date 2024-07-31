@@ -1,0 +1,93 @@
+/* src/components/HomeContactContainer.scss*/
+
+.homeContactContainer {
+  display: flex;
+  align-items: flex-end;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: auto;
+  background: var(--background-GreenUp);
+  box-shadow: var(--shadowboxes);
+  padding: clamp(2rem, 2vw, 0.5rem);
+
+  .homeContact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 93%;
+    height: 100%;
+    gap: var(--gap-5xs);
+    text-align: center;
+    font-size: var(--font-size-base);
+    color: var(--color-white);
+    font-family: var(--font-cormorant-garamond);
+    .homeContactContainerPresentation {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+
+      width: 34.688rem;
+      height: 13.813rem;
+      overflow: hidden;
+      gap: 0.063rem 0;
+
+      .verticalLine {
+        width: 0.119rem;
+        position: relative;
+        height: 6.25rem;
+        overflow: hidden;
+        flex-shrink: 0;
+        .line {
+          margin: 0;
+          height: 6.25rem;
+          border-radius: var(--br-9xs);
+          border: 2px solid #aa9751;
+        }
+      }
+      .contactsLogan {
+        width: 34.688rem;
+        height: 7.5rem;
+        overflow: hidden;
+        flex-shrink: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 2.063rem 0;
+        .contact-me {
+          margin: 0;
+          position: relative;
+          font-size: clamp(
+            var(--font-size-base),
+            1vw + 1rem,
+            var(--font-size-25xl)
+          );
+          font-weight: 700;
+          font-family: var(--font-cormorant-garamond);
+          background: linear-gradient(
+            180deg,
+            rgba(192, 173, 90, 0.87),
+            #b98e53
+          );
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          -webkit-text-stroke: 1px transparent;
+        }
+        .lets-talk-share {
+          margin: 0;
+          width: 34.688rem;
+          position: relative;
+          display: inline-block;
+          font-size: clamp(
+            var(--font-size-base),
+            1vw + 1rem,
+            var(--font-size-5xl)
+          );
+        }
+      }
+    }
+  }
+}

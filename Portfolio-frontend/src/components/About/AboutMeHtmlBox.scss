@@ -1,0 +1,192 @@
+/* Portfolio-green\src\components\About\AboutMeHtmlBox.scss */
+
+.aboutMeHtmlBox {
+  position: absolute;
+  top: 16.688rem;
+  left: 0;
+  max-width: 50.938rem;
+  width: 100%;
+  height: 16.625rem;
+  text-align: center;
+  font-size: var(--font-size-5xl);
+  color: var(--color-white);
+  font-family: var(--font-cormorant-garamond);
+  z-index: 10;
+
+  .languageSymbol {
+    position: absolute;
+    overflow: hidden;
+    top: 10.325rem;
+    left: 0;
+    background: linear-gradient(212.8deg, #13191b, #1a2528 63.68%, #0b0e0f);
+    width: 7.5rem;
+    height: 7.5rem;
+    transform: rotate(-43.88deg);
+    transform-origin: 0 0;
+
+    .html-icon {
+      position: absolute;
+      overflow: hidden;
+      height: 79.5%;
+      width: 65%;
+      top: 16.75%;
+      left: 13.92%;
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      transform: rotate(43.88deg);
+    }
+  }
+
+  .aboutMeHtmlBox-child {
+    position: absolute;
+    top: 0.063rem;
+    left: 6.625rem;
+    width: 21.063rem;
+    height: 9rem;
+    object-fit: cover;
+  }
+
+  .planning {
+    position: absolute;
+    top: 0.063rem;
+    left: 27.688rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 0 var(--padding-smi);
+    gap: 1.563rem 0;
+
+    .html {
+      margin: 0;
+      position: relative;
+      font-size: inherit;
+      font-weight: 700;
+      font-family: var(--font-cormorant-garamond);
+      background: linear-gradient(180deg, rgba(192, 173, 90, 0.87), #b98e53);
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      -webkit-text-stroke: 1px transparent;
+    }
+
+    .html-the-backbone {
+      position: relative;
+      display: inline-block;
+      margin: 0;
+      max-width: 20.3rem;
+      width: 100%;
+      height: 7.063rem;
+      font-size: clamp(
+        var(--font-size-3xs),
+        1vw + 0.5rem,
+        var(--font-size-base)
+      );
+      text-align: left;
+    }
+  }
+
+  .timeLine {
+    position: absolute;
+    top: 10.938rem;
+    left: 11.563rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 0.125rem 0;
+    text-align: left;
+    font-size: var(--font-size-base);
+
+    .feb {
+      margin: 0;
+      position: relative;
+      font-size: inherit;
+      font-weight: 400;
+      font-family: var(--font-cormorant-garamond);
+    }
+
+    .timeline-child {
+      width: 0.375rem;
+      height: 0.375rem;
+      position: relative;
+      border-radius: 50%;
+      background: linear-gradient(180deg, rgba(192, 173, 90, 0.87), #b98e53);
+    }
+  }
+}
+
+/* Media queries */
+
+@media (max-width: 768px) {
+  .aboutMeHtmlBox {
+    height: 27rem;
+
+    .languageSymbol {
+      top: 20.65rem;
+      left: 0;
+    }
+
+    .aboutMeHtmlBox-child {
+      top: 10.8rem;
+      left: 6.625rem;
+    }
+
+    .planning {
+      top: 0.063rem;
+      left: 17.688rem;
+    }
+
+    .timeLine {
+      position: absolute;
+      top: 7.35rem;
+      left: 11.563rem;
+    }
+  }
+}
+
+@media (max-width: 650px) {
+  .aboutMeHtmlBox {
+    height: 28rem;
+    .languageSymbol {
+      top: 21.65rem;
+      left: 0;
+    }
+
+    .aboutMeHtmlBox-child {
+      top: 10.8rem;
+      left: 5.8rem;
+    }
+
+    .planning {
+      top: 0.063rem;
+      left: 7.688rem;
+    }
+
+    .timeLine {
+      position: absolute;
+      left: 11.563rem;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .aboutMeHtmlBox {
+    height: 32rem;
+    .languageSymbol {
+      top: 25rem;
+      left: 0;
+    }
+
+    .aboutMeHtmlBox-child {
+      top: 10.8rem;
+      left: 0;
+    }
+
+    .planning {
+      top: 0.063rem;
+      left: 1.688rem;
+    }
+  }
+}

@@ -1,0 +1,33 @@
+// src/components/LineOfTime.scss
+
+.lineOfTime {
+  position: absolute;
+  top: 2.125rem;
+  left: 1.35rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  height: 90rem;
+
+  .verticalLine {
+    width: 0.119rem;
+    position: relative;
+    height: 90.25rem;
+    overflow: hidden;
+    flex-shrink: 0;
+    .line {
+      margin: 0;
+      height: 90.25rem;
+      border-radius: var(--br-9xs);
+      border: 2px solid #aa9751;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .lineOfTime {
+    display: none !important;
+  }
+}

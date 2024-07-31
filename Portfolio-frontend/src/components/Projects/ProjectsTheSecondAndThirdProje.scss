@@ -1,0 +1,65 @@
+/* src/components/ProjectsTheSecondAndThirdProje.scss */
+
+.projectsTheSecondProjectDescription-parent {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  width: 100%;
+  min-height: 24rem;
+  height: auto;
+  box-sizing: border-box;
+  padding: clamp(2rem, 2vw, 0.5rem);
+  gap: var(--gap-21xl);
+  text-align: center;
+  font-size: var(--font-size-5xl);
+
+  .projectsTheSecondProjectDescription {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    overflow: hidden;
+    min-height: 23.75rem;
+    height: 100%;
+    margin-bottom: var(--margin-base);
+    border-radius: var(--br-3xs);
+    background-color: var(--color-slategray);
+    padding: var(--padding-mini);
+    gap: 1.563rem 0;
+
+    .the-first-portfolio {
+      max-width: 14.25rem;
+      width: 100%;
+      font-size: inherit;
+      font-weight: 700;
+      font-family: var(--font-cormorant-garamond);
+      background: linear-gradient(180deg, rgba(192, 173, 90, 0.87), #b98e53);
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      -webkit-text-stroke: 1px transparent;
+    }
+
+    .this-project-was-container {
+      max-width: 19.438rem;
+      width: 100%;
+      font-size: var(--font-size-base);
+      text-align: left;
+      .this-project-was {
+        display: block;
+      }
+    }
+  }
+}
+
+/* Media queries */
+
+@media (max-width: 768px) {
+}
+
+.projectsTheSecondProjectDescription-parent {
+  .projectsTheSecondProjectDescription {
+    height: auto;
+  }
+}

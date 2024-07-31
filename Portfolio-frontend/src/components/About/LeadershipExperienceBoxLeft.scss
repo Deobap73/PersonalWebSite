@@ -1,0 +1,106 @@
+/* Portfolio-green\src\components\About\LeadershipExperienceBoxLeft.scss */
+
+.leadershipExperienceBoxLeft {
+  position: relative;
+  align-self: stretch;
+  height: 16.25rem;
+  overflow: hidden;
+  text-align: left;
+
+  .leadershipExperienceBoxLeftPicture-icon,
+  .leadershipExperienceBoxLeftRectangle {
+    position: absolute;
+    border-radius: var(--br-3xs);
+    width: 50vw;
+    height: 50vw;
+    max-width: 12.25rem;
+    max-height: 12.188rem;
+    transform: translate(0, 0);
+  }
+
+  .leadershipExperienceBoxLeftRectangle {
+    top: 1.75rem;
+    left: 0.625rem;
+    border: 2px solid var(--color-darkkhaki);
+    box-sizing: border-box;
+  }
+
+  .leadershipExperienceBoxLeftPicture-icon {
+    top: 1.438rem;
+    left: 0.938rem;
+    object-fit: cover;
+  }
+
+  .rectangle-parent {
+    position: absolute;
+    top: 3.563rem;
+    left: 9.688rem;
+    max-width: 30.75rem;
+    min-height: 8.438rem;
+    width: 50vw;
+    height: 50vw;
+    transform: translate(0, 0);
+
+    .rectangle-div {
+      position: absolute;
+      top: 0.5rem;
+      left: 0.313rem;
+      border-radius: var(--br-3xs);
+      border: 2px solid var(--color-darkkhaki);
+      box-sizing: border-box;
+      max-width: 30.75rem;
+      min-height: 7.438rem;
+      width: 100%;
+      height: 100%;
+    }
+
+    .leadership-parent {
+      position: absolute;
+      top: 0.25rem;
+      left: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      border-radius: var(--br-3xs);
+      background-color: var(--color-cadetblue);
+      backdrop-filter: blur(10px);
+      max-width: 30.75rem;
+      width: 100%;
+      padding: var(--padding-3xs);
+      box-sizing: border-box;
+      gap: 0.938rem 0;
+
+      .leadership,
+      .leadership-skills-were {
+        margin: 0;
+        position: relative;
+        display: inline-block;
+      }
+      .leadership {
+        max-width: 16.75rem;
+        width: 100%;
+        font-weight: 400;
+        font-size: clamp(
+          var(--font-size-1xs),
+          1vw + 1rem,
+          var(--font-size-5xl)
+        );
+        background: linear-gradient(180deg, rgba(192, 173, 90, 0.87), #b98e53);
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        -webkit-text-stroke: 1px transparent;
+      }
+      .leadership-skills-were {
+        max-width: 30rem;
+        width: 100%;
+        font-size: clamp(
+          var(--font-size-3xs),
+          0.1vw + 1rem,
+          var(--font-size-xl)
+        );
+        flex-shrink: 0;
+      }
+    }
+  }
+}

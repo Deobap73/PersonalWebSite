@@ -1,0 +1,29 @@
+/* Portfolio-green\src\components\About\AboutMeWelcomeContainerBox.scss */
+
+.aboutMeWelcomeContainer-parent {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  padding: 0 var(--padding-lg);
+  gap: 0 2rem;
+  margin-top: -0.125rem;
+  .aboutMeBackground-1-icon {
+    width: 45%;
+    height: auto;
+    object-fit: cover;
+  }
+}
+
+@media (max-width: 770px) {
+  .aboutMeWelcomeContainer-parent {
+    flex-direction: column;
+    align-items: center;
+    .aboutMeBackground-1-icon {
+      width: 80%;
+      min-height: 325px;
+      order: -1; /* change the order of the image so that it appears before the AboutMeWelcomeContainer */
+    }
+  }
+}

@@ -1,0 +1,35 @@
+//src/components/FooterMeAsDeveloper.scss
+
+.measdeveloper1 {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 15rem;
+  padding: var(--padding-7xs) var(--padding-8xs);
+  gap: var(--gap-9xs) 0;
+  text-align: left;
+  font-size: var(--font-size-xs);
+  color: var(--color-white);
+  font-family: var(--font-cormorant-garamond);
+  .me-as-a1 {
+    position: relative;
+    display: inline-block;
+    margin: 0;
+    flex-shrink: 0;
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    font-family: var(--font-cormorant-garamond);
+    background: var(--background-gold);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .web-development-text {
+    margin: 0;
+    position: relative;
+    display: inline-block;
+    flex-shrink: 0;
+    font-size: var(--font-size-base);
+  }
+}

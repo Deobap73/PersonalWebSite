@@ -1,0 +1,26 @@
+/* src/components/ProjectsTheFirstProject.scss */
+.projectsbutton {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  text-decoration: none;
+  width: 8.875rem;
+  border-radius: var(--br-6xl);
+  box-shadow: 0 2px 0#0b1213;
+  border: 1px solid var(--boxbackgroundgreenlight);
+  padding: var(--padding-3xs);
+  text-align: center;
+  font-size: var(--font-size-base);
+  color: var(--color-white);
+  background-color: var(--background-transparent);
+  font-family: var(--font-cormorant-garamond);
+  cursor: pointer;
+  &:hover {
+    color: var(--color-gold);
+  }
+  .visit-the-code {
+    position: relative;
+  }
+}

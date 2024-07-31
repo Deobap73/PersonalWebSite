@@ -1,0 +1,106 @@
+// src/components/HomeTheVocation.scss
+
+.homeTheVocation {
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  height: auto;
+  position: relative;
+  overflow: hidden;
+  background: var(--background-GreenDown);
+  box-shadow: var(--shadowboxes);
+  .homeVocationContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    width: 93%;
+    height: 100%;
+    gap: var(--gap-5xs);
+    text-align: center;
+    font-size: var(--font-size-base);
+    color: var(--color-white);
+    font-family: var(--font-cormorant-garamond);
+    .homeVocationContainerPresentation {
+      width: 100%;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-height: 13.813rem;
+      justify-content: center;
+      gap: 0.063rem 0;
+      margin-block: var(--margin-2xl) var(--margin-50xl);
+      .verticalLine {
+        width: 0.119rem;
+        position: relative;
+        height: 6.25rem;
+        overflow: hidden;
+        .line {
+          margin: 0;
+          height: 6.25rem;
+          border-radius: var(--br-9xs);
+          border: 2px solid #aa9751;
+        }
+      }
+      .homeVocationsLogan {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: auto;
+        overflow: hidden;
+        .homeVocationsLoganTitle {
+          font-size: clamp(
+            var(--font-size-3xs),
+            1vw + 1rem,
+            var(--font-size-25xl)
+          );
+          .the-vocation {
+            margin: 0;
+            font-size: clamp(
+              var(--font-size-3xs),
+              1vw + 1rem,
+              var(--font-size-25xl)
+            );
+            font-weight: 700;
+            font-family: var(--font-cormorant-garamond);
+            background: linear-gradient(
+              180deg,
+              rgba(192, 173, 90, 0.87),
+              #b98e53
+            );
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            -webkit-text-stroke: 1px transparent;
+          }
+        }
+        .where-every-line {
+          position: relative;
+          margin: 0;
+          width: 100%;
+          font-size: clamp(
+            var(--font-size-base),
+            1vw + 1rem,
+            var(--font-size-25xl)
+          );
+          padding: 0 min(5vh, 34.688rem);
+          display: inline-block;
+        }
+      }
+    }
+
+    .homeVocationPresentations {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      justify-content: space-evenly;
+      gap: 0 2.938rem;
+      text-align: center;
+      font-size: var(--font-size-5xl);
+      color: var(--color-white);
+      font-family: var(--font-cormorant-garamond);
+    }
+  }
+}
