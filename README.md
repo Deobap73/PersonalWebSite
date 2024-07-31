@@ -6,7 +6,7 @@ Site created primarily to be my portfolio.
 
 A project where I try to explore my creativity in the design area, playing with minimalism and abstract ways of placing elements on the website
 <br> <br>
-<img src="https://github.com/Deobap73/Deobap73Pictures/blob/70b097a5d9c5003a1d214750172ec6903339e596/Assets/PortfolioHomePage.webp">
+<img src="https://github.com/Deobap73/Deobap73Pictures/blob/70b097a5d9c5003a1d214750172ec6903339e596/Assets/PortfolioHomePage.png">
 <br> <br>
 
 ## In my website you can...
@@ -18,9 +18,9 @@ A project where I try to explore my creativity in the design area, playing with 
 - ...And soon follow my blog!
 
 <br> <br>
-<img src="https://github.com/Deobap73/Deobap73Pictures/blob/70b097a5d9c5003a1d214750172ec6903339e596/Assets/PortfolioAboutPage.webp">
+<img src="https://github.com/Deobap73/Deobap73Pictures/blob/70b097a5d9c5003a1d214750172ec6903339e596/Assets/PortfolioAboutPage.png">
 <br> <br>
-<img src="https://github.com/Deobap73/Deobap73Pictures/blob/70b097a5d9c5003a1d214750172ec6903339e596/Assets/PortfolioAboutPage2.webp">
+<img src="https://github.com/Deobap73/Deobap73Pictures/blob/70b097a5d9c5003a1d214750172ec6903339e596/Assets/PortfolioAboutPage2.png">
 <br> <br>
 
 ## The Technologies I used.
