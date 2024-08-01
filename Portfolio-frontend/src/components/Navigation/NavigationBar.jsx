@@ -92,7 +92,7 @@ const NavigationBar = ({ context }) => {
           <b className='b'>|</b>
 
           {status === 'notAuthenticated' ? (
-            <a href='/login'>Login</a>
+            <a href='/signIn'>Login</a>
           ) : (
             <>
               <a href='blog/writePage'>Write</a>

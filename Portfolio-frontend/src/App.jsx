@@ -1,36 +1,35 @@
 // src/App.jsx
 
 import { useEffect } from 'react';
-import { Routes, Route, BrowserRouter } from 'react-router-dom';
-
+import { Routes, Route, BrowserRouter, useLocation } from 'react-router-dom';
 import Home from './pages/Home';
 import AboutMe from './pages/AboutMe';
 import Projects from './pages/Projects';
 import Blog from './pages/Blog';
-/* import { CategoryPage } from './blogApp/categoryPage/CategoryPage';
-import { WritePage } from './blogApp/write/WritePage';
-import SinglePage from './blogApp/posts/[slug]/SinglePage'; */
-/* import SignUp from './components/Blog/Pages/userAuthForm.page'; */
 
-function App() {
-  const pathname = location.pathname;
+function ScrollToTop() {
+  const location = useLocation();
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [pathname]);
+  }, [location.pathname]);
 
+  return null;
+}
+
+function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />{' '}
+      {/* Certifique-se de que este componente esteja dentro do Router */}
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/aboutMe' element={<AboutMe />} />
         <Route path='/projects' element={<Projects />} />
-        <Route path='/blog' element={<Blog />} />
-        {/* <Route path='/LoginPage' element={<LoginPage />} /> */}
-        {/* <Route path='/signUp' element={<SignUp />} /> */}
-        {/* <Route path='/blog/category' element={<CategoryPage />} />
-        <Route path='/blog/singlePage' element={<SinglePage />} />{' '}
-        <Route path='/blog/writePage' element={<WritePage />} />{' '} */}
+        <Route path='/blog' element={<Blog />}>
+          <Route path='signIn' element={<h1>Sign In</h1>} />
+          <Route path='signUp' element={<h1>Sign Up</h1>} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );

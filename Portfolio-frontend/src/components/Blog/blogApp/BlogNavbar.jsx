@@ -1,6 +1,6 @@
 // PersonalWebSite\Portfolio-frontend\src\components\Blog\blogApp\BlogNavbar.jsx
 
-import { Link } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import images from '../../../assets/imageIndex';
 import { FaSearch } from 'react-icons/fa';
@@ -55,6 +55,7 @@ export const BlogNavbar = () => {
           />
         </div>
       </nav>
+      <Outlet />
     </>
   );
 };
