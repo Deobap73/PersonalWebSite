@@ -1,0 +1,27 @@
+/* PersonalWebSite\Portfolio-frontend\src\components\Blog\blogApp\BlogInput.scss */
+.blogInput {
+  position: relative;
+  width: 100%;
+  margin-block: var(--margin-2xs) var(--margin-2xl);
+  display: flex;
+  align-items: center;
+
+  .inputIconLeft {
+    position: absolute;
+    left: 10px;
+    color: var(--color-gold);
+  }
+  .inputIconRight {
+    position: absolute;
+    right: 10px;
+    color: var(--color-gold);
+    cursor: pointer; /* Pointer cursor to indicate that it is clickable */
+  }
+
+  .blogInputBox {
+    padding-left: 2.5rem; /* Space for icon on the left */
+    padding-right: 2.5rem; /* Space for icon on the right */
+    width: 100%;
+    height: 2rem;
+  }
+}

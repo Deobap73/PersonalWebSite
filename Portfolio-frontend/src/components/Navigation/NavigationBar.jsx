@@ -25,8 +25,13 @@ const NavigationBar = ({ context }) => {
   const onBlogClick = useCallback(() => {
     navigate('/blog');
   }, [navigate]);
+
+  const onSignInClick = useCallback(() => {
+    navigate('/blog/signIn');
+  }, [navigate]);
+
   const onSignUpClick = useCallback(() => {
-    navigate('/signUp');
+    navigate('/blog/signUp');
   }, [navigate]);
 
   return (
@@ -92,18 +97,26 @@ const NavigationBar = ({ context }) => {
           <b className='b'>|</b>
 
           {status === 'notAuthenticated' ? (
-            <a href='/signIn'>Login</a>
+            <>
+              <span className='about' onClick={onSignInClick}>
+                Sign In
+              </span>
+              <b className='b'>|</b>
+              <span className='about' onClick={onSignUpClick}>
+                Sign Up
+              </span>
+            </>
           ) : (
             <>
-              <a href='blog/writePage'>Write</a>
+              <a href='/blog/writePage'>Write</a>
               <b className='b'>|</b>
-              <span onClick={() => setStatus('notAuthenticated')}>Logout</span>
+              <span
+                className='about'
+                onClick={() => setStatus('notAuthenticated')}>
+                Sign Out
+              </span>
             </>
           )}
-          <b className='b'>|</b>
-          <span className='about' onClick={onSignUpClick}>
-            Sign Up
-          </span>
         </>
       )}
     </nav>

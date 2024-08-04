@@ -1,12 +1,14 @@
-import { BlogNavbar } from '../blogApp/BlogNavbar';
+// PersonalWebSite\Portfolio-frontend\src\components\Blog\Pages\BlogPage.jsx
+
+import { Outlet } from 'react-router-dom';
 import './BlogPage.scss';
 
-export const BlogPage = () => {
+const BlogPage = () => {
   return (
-    <>
-      <section className='blogPage'>
-        <BlogNavbar />
-      </section>
-    </>
+    <section className='blogPage'>
+      <Outlet /> {/* Isso renderiza o conteúdo das rotas aninhadas */}
+    </section>
   );
 };
+
+export default BlogPage;

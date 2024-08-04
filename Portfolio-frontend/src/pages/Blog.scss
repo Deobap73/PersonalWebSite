@@ -6,7 +6,7 @@
   width: 100%;
   position: relative;
   background: var(--background-general);
-  height: 100vh;
+  height: auto;
   overflow: hidden;
   flex-direction: column;
   justify-content: flex-start;
@@ -16,7 +16,7 @@
   .blogPresentationName {
     display: flex;
     align-items: center;
-    min-height: 12rem;
+    min-height: 14rem;
     height: auto;
     flex-direction: row;
     justify-content: center;

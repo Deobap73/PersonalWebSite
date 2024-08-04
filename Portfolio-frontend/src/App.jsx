@@ -5,7 +5,8 @@ import { Routes, Route, BrowserRouter, useLocation } from 'react-router-dom';
 import Home from './pages/Home';
 import AboutMe from './pages/AboutMe';
 import Projects from './pages/Projects';
-import Blog from './pages/Blog';
+import Blog from './pages/Blog'; /* 
+import UserAuthForm from './components/Blog/Pages/userAuthForm.page'; */
 
 function ScrollToTop() {
   const location = useLocation();
@@ -20,16 +21,12 @@ function ScrollToTop() {
 function App() {
   return (
     <BrowserRouter>
-      <ScrollToTop />{' '}
-      {/* Certifique-se de que este componente esteja dentro do Router */}
+      <ScrollToTop />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/aboutMe' element={<AboutMe />} />
         <Route path='/projects' element={<Projects />} />
-        <Route path='/blog' element={<Blog />}>
-          <Route path='signIn' element={<h1>Sign In</h1>} />
-          <Route path='signUp' element={<h1>Sign Up</h1>} />
-        </Route>
+        <Route path='/blog/*' element={<Blog />} />
       </Routes>
     </BrowserRouter>
   );
