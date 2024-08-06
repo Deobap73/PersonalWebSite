@@ -1,12 +1,14 @@
 // PersonalWebSite\Portfolio-frontend\src\components\Blog\blogApp\BlogNavbar.jsx
 
 import { Link, Outlet } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import images from '../../../assets/imageIndex';
-import { FaSearch } from 'react-icons/fa';
+import { FaSearch, FaRegBell } from 'react-icons/fa';
 import './BlogNavbar.scss';
+import { userContext } from '../../../contexts/context';
 
 export const BlogNavbar = () => {
+  const { userAuth } = useContext(userContext);
   // State to manage the visibility of the search box (only for small screens)
   const [searchBoxVisibility, setSearchBoxVisibility] = useState(false);
 
@@ -41,18 +43,33 @@ export const BlogNavbar = () => {
         <Link to='/blog'>
           <img src={images.deoIconGold} alt='Circular logo with the letter D' />
         </Link>
-
-        {/* Search box with conditional visibility */}
-        <div
-          className={`blogSearch ${
-            isMobile && !searchBoxVisibility ? 'hide' : 'show'
-          }`}>
-          <input type='text' placeholder='Search' className='blogSearchInput' />
-          {/* Search icon with conditional click handler based on screen size */}
-          <FaSearch
-            onClick={isMobile ? toggleSearchBox : null}
-            className='BlogSearchIcon'
-          />
+        <div className='blogNavbarSearchAndNotificationIcon'>
+          {/* Search box with conditional visibility */}
+          <div
+            className={`blogSearch ${
+              isMobile && !searchBoxVisibility ? 'hide' : 'show'
+            }`}>
+            <input
+              type='text'
+              placeholder='Search'
+              className='blogSearchInput'
+            />
+            {/* Search icon with conditional click handler based on screen size */}
+            <FaSearch
+              onClick={isMobile ? toggleSearchBox : null}
+              className='BlogSearchIcon'
+            />
+          </div>
+          {/* Conditions rendering on whether the user is logged in */}
+          {userAuth?.accessToken && (
+            <>
+              <Link to='blog/dashboard/notifications'>
+                <button className='blogNotificationIcon'>
+                  <FaRegBell />
+                </button>
+              </Link>
+            </>
+          )}
         </div>
       </nav>
       <Outlet />

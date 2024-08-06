@@ -1,14 +1,21 @@
 // src/components/NavigationBar.jsx
 
 import PropTypes from 'prop-types';
-import { useCallback, useContext } from 'react';
+import { useCallback, useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './NavigationBar.scss';
 import { userContext } from '../../contexts/context';
+import BlogUserNavigation from '../Blog/blogApp/BlogUserNavigation';
+import './NavigationBar.scss';
 
 const NavigationBar = ({ context }) => {
   const navigate = useNavigate();
-  const { status, setStatus } = useContext(userContext);
+
+  const { userAuth } = useContext(userContext);
+
+  const { status, onSignOutClick } = useContext(userContext);
+
+  // Local state to control BlogUserNavigation visibility
+  const [isUserNavVisible, setUserNavVisible] = useState(false);
 
   const onHomeClick = useCallback(() => {
     navigate('/');
@@ -33,6 +40,15 @@ const NavigationBar = ({ context }) => {
   const onSignUpClick = useCallback(() => {
     navigate('/blog/signUp');
   }, [navigate]);
+
+  const onWriteClick = useCallback(() => {
+    navigate('/blog/editor');
+  }, [navigate]);
+
+  // Click handler to toggle BlogUserNavigation visibility
+  const toggleUserNav = () => {
+    setUserNavVisible((prevState) => !prevState);
+  };
 
   return (
     <nav className='navigationBar'>
@@ -108,13 +124,21 @@ const NavigationBar = ({ context }) => {
             </>
           ) : (
             <>
-              <a href='/blog/writePage'>Write</a>
+              <span className='about' onClick={onWriteClick}>
+                Write
+              </span>
               <b className='b'>|</b>
-              <span
-                className='about'
-                onClick={() => setStatus('notAuthenticated')}>
+              <span className='about' onClick={onSignOutClick}>
                 Sign Out
               </span>
+              <b className='b'>|</b>
+              <div className='blogUserImage'>
+                <button className='blogUserIcon' onClick={toggleUserNav}>
+                  <img src={userAuth.profile_img} alt='User Profile' />
+                </button>
+                {/* Conditionally render BlogUserNavigation */}
+                {isUserNavVisible && <BlogUserNavigation />}
+              </div>
             </>
           )}
         </>
@@ -124,7 +148,7 @@ const NavigationBar = ({ context }) => {
 };
 
 NavigationBar.propTypes = {
-  context: PropTypes.node.isRequired,
+  context: PropTypes.string.isRequired,
 };
 
 export default NavigationBar;

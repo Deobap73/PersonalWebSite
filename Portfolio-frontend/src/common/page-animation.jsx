@@ -23,7 +23,6 @@ const AnimationWrapper = ({
           {children}
         </motion.div>
       </AnimatePresence>
-      ;
     </>
   );
 };

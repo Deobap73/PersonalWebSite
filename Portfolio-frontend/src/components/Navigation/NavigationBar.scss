@@ -1,11 +1,12 @@
 // src/components/NavigationBar.scss
 
 .navigationBar {
-  margin-block: min(5vw, var(--padding-13xl));
+  margin-block: min(5vw, var(--margin-5xl));
   display: flex;
   flex-direction: row;
-  align-items: flex-end;
-  justify-content: flex-start;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
   gap: 0 1.375rem;
   text-align: center;
   font-size: var(--font-size-base);
@@ -13,6 +14,7 @@
   color: var(--color-white);
   font-family: var(--font-cormorant-garamond);
   .about {
+    padding: 1rem 0;
     cursor: pointer;
     text-decoration: none;
     color: inherit;
@@ -21,4 +23,28 @@
       position: relative;
     }
   }
+  .blogUserImage {
+    position: relative;
+    .blogUserIcon {
+      width: 2.5rem;
+      height: 2.5rem;
+      overflow: hidden;
+      object-fit: cover;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+  }
+}
+
+/* Media queries */
+@media (max-width: 1180px) {
+}
+
+@media (max-width: 768px) {
+}
+
+@media (max-width: 650px) {
+}
+
+@media (max-width: 480px) {
 }
