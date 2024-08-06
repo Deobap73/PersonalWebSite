@@ -7,8 +7,9 @@
 }
 
 import PropTypes from 'prop-types';
-import { useCallback, useState } from 'react';
-import { MyContext } from './context';
+import { useCallback, useEffect, useState } from 'react';
+import { userContext } from './context';
+import { lookInSession } from '../common/session';
 
 function Container({ children }) {
   // Variable refers to the icon with the symbol 'D'
@@ -16,18 +17,34 @@ function Container({ children }) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 
+  // useEffect should be called once
+  useEffect(() => {
+    const userInSession = lookInSession('user');
+
+    // Check if the user is already logged in, and if so, retrieve their data from the session storage.
+    if (userInSession) {
+      try {
+        setUserAuth(JSON.parse(userInSession));
+      } catch (error) {
+        console.error('Failed to parse user from session:', error);
+        setUserAuth({ accessToken: null });
+      }
+    } else {
+      setUserAuth({ accessToken: null });
+    }
+  }, []);
+
   // State for authentication status
   const [status, setStatus] = useState('notAuthenticated');
 
-  // Context values
-  const contextValues = {
-    onDeoIconGold1Click,
-    status,
-    setStatus,
-  };
+  // create a user auth State
+  const [userAuth, setUserAuth] = useState({ accessToken: null });
 
   return (
-    <MyContext.Provider value={contextValues}>{children}</MyContext.Provider>
+    <userContext.Provider
+      value={{ onDeoIconGold1Click, status, setStatus, userAuth, setUserAuth }}>
+      {children}
+    </userContext.Provider>
   );
 }
 

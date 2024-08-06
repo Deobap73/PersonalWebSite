@@ -4,11 +4,11 @@ import PropTypes from 'prop-types';
 import { useCallback, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './NavigationBar.scss';
-import { MyContext } from '../../contexts/context';
+import { userContext } from '../../contexts/context';
 
 const NavigationBar = ({ context }) => {
   const navigate = useNavigate();
-  const { status, setStatus } = useContext(MyContext);
+  const { status, setStatus } = useContext(userContext);
 
   const onHomeClick = useCallback(() => {
     navigate('/');

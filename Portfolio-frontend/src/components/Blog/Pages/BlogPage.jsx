@@ -6,7 +6,7 @@ import './BlogPage.scss';
 const BlogPage = () => {
   return (
     <section className='blogPage'>
-      <Outlet /> {/* Isso renderiza o conteúdo das rotas aninhadas */}
+      <Outlet /> {/* This renders the contents of the nested routes */}
     </section>
   );
 };

@@ -2,6 +2,7 @@
 
 import express from 'express';
 import mongoose from 'mongoose';
+import cors from 'cors';
 import dotenv from 'dotenv';
 import bcrypt, { hash } from 'bcrypt';
 import { nanoid } from 'nanoid';
@@ -24,11 +25,13 @@ let passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/; // regex for pass
 
 // Middleware
 server.use(express.json());
+// enable our server to accept the data from FrontEnd
+server.use(cors());
 
 // Connecting to MongoDB
 mongoose
   .connect(process.env.DB_LOCATION, {
-    autoIndex: true, // This option is passed inside an object
+    autoIndex: true, // Esta opção é passada dentro de um objeto
   })
   .then(() => {
     console.log('Connected to MongoDB');
@@ -67,7 +70,7 @@ const generateUsername = async (email) => {
 };
 
 // setup sign-up root for the form validation
-server.post('/signup', (req, res) => {
+server.post('/signup', async (req, res) => {
   let { fullname, email, password } = req.body;
 
   // validating the data from frontend
@@ -101,29 +104,28 @@ server.post('/signup', (req, res) => {
         'Password must be between 6 and 20 characters long and contain at least one uppercase letter, one lowercase letter, and one number.',
     });
   }
-  // convert password into a hash password
-  bcrypt.hash(password, 10, async (err, hashed_password) => {
-    // Store the data of user in database
+
+  try {
+    // Convert password to a hash
+    const hashed_password = await bcrypt.hash(password, 10);
+
+    // Storing user data in the database
     let username = await generateUsername(email);
 
     let user = new User({
       personal_info: { fullname, email, password: hashed_password, username },
     });
-    user
-      .save()
-      .then((u) => {
-        return res.status(200).json(formatDataToSend(u));
-      })
-      .catch((err) => {
-        if (err.code === 11000) {
-          return res.status(409).json({ error: 'Email already exists.' });
-        } else {
-          return res.status(500).json({ error: err });
-        }
-      });
-  });
 
-  /* return res.status(200).json({ 'status': 'Okay' }); */
+    // Saving the user and sending the response
+    let savedUser = await user.save();
+    return res.status(200).json(formatDataToSend(savedUser));
+  } catch (err) {
+    if (err.code === 11000) {
+      return res.status(409).json({ error: 'Email already exists.' });
+    } else {
+      return res.status(500).json({ error: err.message });
+    }
+  }
 });
 
 // setup sign-in root for the form validation
@@ -131,7 +133,7 @@ server.post('/signup', (req, res) => {
 server.post('/signin', (req, res) => {
   let { email, password } = req.body;
 
-  // Check if email and password are provided
+  // Check that email and password have been provided
   if (!email || !password) {
     return res.status(400).json({ error: 'Email and password are required' });
   }
@@ -146,14 +148,14 @@ server.post('/signin', (req, res) => {
       // Check if the password is correct
       bcrypt.compare(password, user.personal_info.password, (err, result) => {
         if (err) {
-          // Handle bcrypt errors
+          // Handling bcrypt errors
           console.error(err);
           return res.status(500).json({ error: 'Server error' });
         }
 
         if (result) {
-          // Passwords match, send a success response
-          return res.status(200).json(formatDataToSend(u));
+          // Passwords match, send success response
+          return res.status(200).json(formatDataToSend(user));
         }
 
         // Passwords do not match, send an error response
@@ -161,7 +163,7 @@ server.post('/signin', (req, res) => {
       });
     })
     .catch((err) => {
-      // Handle any errors that occur during the query
+      // Handle any errors that occur during a query
       console.error(err);
       return res.status(500).json({ error: err.message });
     });

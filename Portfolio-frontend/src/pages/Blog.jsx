@@ -35,7 +35,7 @@ const Blog = () => {
         <h1 className='my-blog'>My Blog</h1>
       </section>
 
-      {/* Renderize BlogMain apenas na rota principal do blog */}
+      {/* Render BlogMain only in the main blog route */}
       {location.pathname === '/blog' && <BlogMain />}
 
       <Routes>

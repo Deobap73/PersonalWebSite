@@ -1,4 +1,4 @@
 //image-gen/client/src/contexts/context.jsx
-import { createContext } from "react";
+import { createContext } from 'react';
 
-export const MyContext = createContext();
+export const userContext = createContext({});
