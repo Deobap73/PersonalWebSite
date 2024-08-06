@@ -11,6 +11,7 @@ import { PiPasswordBold } from 'react-icons/pi';
 import images from '../../../assets/imageIndex';
 import AnimationWrapper from '../../../common/page-animation';
 import { storeInSession } from '../../../common/session';
+import { authWithGoogle } from '../../../common/firebase';
 import BlogInput from '../blogApp/BlogInput';
 import './BlogUserAuthFormPage.scss';
 
@@ -100,6 +101,22 @@ const BlogUserAuthFormPage = ({ type }) => {
     toast.success('Form submitted successfully!');
   };
 
+  const handleGoogleAuth = (e) => {
+    e.preventDefault();
+    authWithGoogle()
+      .then((user) => {
+        console.log(user);
+        if (user) {
+          toast.success('Google sign-in successful!');
+          navigate('/blog'); // Redirect to /blog after successful sign-in
+        }
+      })
+      .catch((err) => {
+        toast.error('Trouble logging through Google');
+        console.log(err);
+      });
+  };
+
   {
     /*
 I  wrapping my whole form section inside the animation wrapper 
@@ -160,7 +177,8 @@ in this animation wrapper and it will change the whole website Pages animation.
 
           <button
             type='submit'
-            className='blogUserAuthFormPageSubmit blogUserAuthFormPageSubmitGoogle'>
+            className='blogUserAuthFormPageSubmit blogUserAuthFormPageSubmitGoogle'
+            onClick={handleGoogleAuth}>
             <img
               className='blogUserAuthFormPageSubmit-icon'
               alt='Google icon'

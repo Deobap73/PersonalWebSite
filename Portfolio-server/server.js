@@ -4,9 +4,12 @@ import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import bcrypt, { hash } from 'bcrypt';
+import bcrypt from 'bcrypt';
 import { nanoid } from 'nanoid';
 import jwt from 'jsonwebtoken';
+import admin from 'firebase-admin';
+import serviceAccountKey from './personalwebsite-blog-37add-firebase-adminsdk-8vjsd-669cbae04c.json' assert { type: 'json' };
+import { getAuth } from 'firebase-admin/auth';
 
 // Importing the schemas from the Schema folder
 import User from './Schema/User.js';
@@ -18,6 +21,10 @@ const server = express();
 
 // Uses the PORT value from the environment variable, if available
 const PORT = process.env.PORT || 3000;
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccountKey),
+});
 
 // email and password authentication configuration settings
 let emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/; // regex for email
@@ -145,27 +152,91 @@ server.post('/signin', (req, res) => {
         return res.status(403).json({ error: 'Email not found' });
       }
 
-      // Check if the password is correct
-      bcrypt.compare(password, user.personal_info.password, (err, result) => {
-        if (err) {
-          // Handling bcrypt errors
-          console.error(err);
-          return res.status(500).json({ error: 'Server error' });
-        }
+      if (!user.google_auth) {
+        // Check if the password is correct
+        bcrypt.compare(password, user.personal_info.password, (err, result) => {
+          if (err) {
+            // Handling bcrypt errors
+            console.error(err);
+            return res.status(500).json({ error: 'Server error' });
+          }
 
-        if (result) {
-          // Passwords match, send success response
-          return res.status(200).json(formatDataToSend(user));
-        }
+          if (result) {
+            // Passwords match, send success response
+            return res.status(200).json(formatDataToSend(user));
+          }
 
-        // Passwords do not match, send an error response
-        return res.status(403).json({ error: 'Incorrect password' });
-      });
+          // Passwords do not match, send an error response
+          return res.status(403).json({ error: 'Incorrect password' });
+        });
+      } else {
+        return res.status(403).json({
+          error: 'account was created using google. Try logging in with google',
+        });
+      }
     })
     .catch((err) => {
       // Handle any errors that occur during a query
       console.error(err);
       return res.status(500).json({ error: err.message });
+    });
+});
+
+// setup google auth
+
+server.post('/google-auth', async (req, res) => {
+  let { access_Token } = req.body;
+
+  getAuth()
+    .verifyIdToken(access_Token)
+    .then(async (decodeUser) => {
+      let { email, name, picture } = decodeUser;
+
+      // to give a High resolution for the image of the Google user
+      picture = picture.replace('s96-c', 's384-c');
+
+      // create a user in database
+      let user = await User.findOne({ 'personal_info.email': email })
+        .select(
+          'personal_info.fullname personal_info.username personal_info.profile_img google_auth'
+        )
+        .then((u) => {
+          return u || null;
+        })
+        .catch((err) => {
+          return res.status(500).json({ error: err.message });
+        });
+
+      if (user) {
+        if (!user.google_auth) {
+          return res.status(403).json({
+            error:
+              'This email was signed without Google. Please login with password to access the account.',
+          });
+        }
+      } else {
+        let username = await generateUsername(email);
+
+        user = new User({
+          personal_info: {
+            fullname: name,
+            email,
+            username,
+          },
+          google_auth: true, // Indicates that the user has been authenticated by Google
+        });
+
+        await user
+          .save()
+          .then((u) => {
+            user = u;
+            // Return user data as a response
+            return res.status(200).json(user);
+          })
+          .catch((error) => {
+            return res.status(500).json({ error: error.message });
+          });
+      }
     });
 });
 
