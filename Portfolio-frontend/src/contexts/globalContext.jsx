@@ -20,6 +20,9 @@ function Container({ children }) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 
+  // State for editor state which will just tell what state this editor page is
+  const [editorState, setEditorState] = useState('editor');
+
   // State for authentication status
   const [status, setStatus] = useState('notAuthenticated');
 
@@ -73,6 +76,8 @@ function Container({ children }) {
         userAuth,
         setUserAuth,
         onSignOutClick,
+        editorState,
+        setEditorState,
       }}>
       {children}
     </userContext.Provider>
