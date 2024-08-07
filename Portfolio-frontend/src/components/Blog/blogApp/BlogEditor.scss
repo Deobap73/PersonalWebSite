@@ -1,1 +1,38 @@
 /* PersonalWebSite\Portfolio-frontend\src\components\Blog\blogApp\BlogEditor.scss */
+
+.blogEditorNavbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 var(--margin-base);
+
+  gap: var(--gap-5xs);
+  color: black;
+  .blogEditorTitle {
+    visibility: hidden;
+  }
+  .blogEditorNavbarButtons {
+    display: flex;
+    gap: var(--gap-5xs);
+
+    .blogEditorNavbarButton {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      width: auto;
+      margin: var(--margin-2xs);
+      border: 1px solid var(--boxbackgroundgreenlight);
+      padding: var(--padding-3xs) var(--padding-base);
+      color: var(--color-white);
+      background-color: var(--boxbackgroundgreendark);
+      border-radius: var(--br-6xl);
+      box-shadow: 0 2px 0 #769297;
+      box-sizing: border-box;
+    }
+    .blogEditorNavbarButtonDraft {
+      background-color: var(--color-grayLight);
+      box-shadow: 0 2px 0 #656d6e;
+    }
+  }
+}
