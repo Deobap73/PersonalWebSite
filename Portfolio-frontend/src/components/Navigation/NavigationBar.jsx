@@ -42,7 +42,7 @@ const NavigationBar = ({ context }) => {
   }, [navigate]);
 
   const onWriteClick = useCallback(() => {
-    navigate('/blog/editor');
+    navigate('/editor');
   }, [navigate]);
 
   // Click handler to toggle BlogUserNavigation visibility
