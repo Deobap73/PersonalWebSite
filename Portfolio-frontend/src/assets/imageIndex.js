@@ -3,6 +3,7 @@
 import Error_404 from './404_Error.webp';
 import aboutMeBackground from './aboutmebackground.webp';
 import AthleteProfile from './athleteProfile.webp';
+import blogBanner from './blog banner.png';
 import briefcase from './briefcase.svg';
 import comments from './comments.svg';
 import copyright from './copyright.svg';
@@ -78,6 +79,7 @@ const images = {
   Error_404,
   aboutMeBackground,
   AthleteProfile,
+  blogBanner,
   briefcase,
   comments,
   copyright,

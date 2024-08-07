@@ -3,8 +3,15 @@
 import { Link } from 'react-router-dom';
 import images from '../../../assets/imageIndex.js';
 import './BlogEditor.scss';
+import AnimationWrapper from '../../../common/page-animation.jsx';
 
 export const BlogEditor = () => {
+  const handleBannerUpload = (e) => {
+    let img = e.target.files[0];
+
+    console.log(img);
+  };
+
   return (
     <>
       <nav className='blogEditorNavbar'>
@@ -21,7 +28,28 @@ export const BlogEditor = () => {
         </div>
       </nav>
 
-      <div className='blogEditor'></div>
+      <AnimationWrapper>
+        <section className='blogEditor'>
+          <div className='blogEditorSub'>
+            <div className='blogEditorBanner'>
+              <label htmlFor='uploadBanner'>
+                <img
+                  src={images.blogBanner}
+                  alt='Placeholder image'
+                  className='blogEditorBannerImage'
+                />
+                <input
+                  id='uploadBanner'
+                  type='file'
+                  accept='.png, .jpg, .jpeg'
+                  hidden
+                  onChange={handleBannerUpload}
+                />
+              </label>
+            </div>
+          </div>
+        </section>
+      </AnimationWrapper>
     </>
   );
 };
