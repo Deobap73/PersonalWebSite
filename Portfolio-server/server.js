@@ -10,6 +10,7 @@ import jwt from 'jsonwebtoken';
 import admin from 'firebase-admin';
 import serviceAccountKey from './personalwebsite-blog-37add-firebase-adminsdk-8vjsd-669cbae04c.json' assert { type: 'json' };
 import { getAuth } from 'firebase-admin/auth';
+import aws from 'aws-sdk';
 
 // Importing the schemas from the Schema folder
 import User from './Schema/User.js';
@@ -46,6 +47,13 @@ mongoose
   .catch((err) => {
     console.error('Error connecting to MongoDB:', err);
   });
+
+// settings up S3 bucket
+const s3 = new aws.S3({
+  region: 'eu-central-1',
+  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+});
 
 // what we want to send to the database
 const formatDataToSend = (user) => {
