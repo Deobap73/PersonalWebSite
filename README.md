@@ -2,7 +2,7 @@
 
  <br>
 
-Site created primarily to be my portfolio.
+Site created primarily as my portfolio.
 
 A project where I try to explore my creativity in the design area, playing with minimalism and abstract ways of placing elements on the website
 <br> <br>
