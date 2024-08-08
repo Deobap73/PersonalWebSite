@@ -39,7 +39,7 @@ server.use(cors());
 // Connecting to MongoDB
 mongoose
   .connect(process.env.DB_LOCATION, {
-    autoIndex: true, // Esta opção é passada dentro de um objeto
+    autoIndex: true, // This option is passed inside an object
   })
   .then(() => {
     console.log('Connected to MongoDB');
@@ -51,8 +51,31 @@ mongoose
 // settings up S3 bucket
 const s3 = new aws.S3({
   region: 'eu-central-1',
-  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+  accessKeyId: process.env.AWS_ACCESS_KEY,
   secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+});
+
+//create a function that we will generate upload code URL
+const generateUploadURL = async () => {
+  const date = new Date();
+  const imageName = `${nanoid()}-${date.getTime()}.jpeg`;
+
+  return await s3.getSignedUrlPromise('putObject', {
+    Bucket: 'personal-portfolio-website-blog',
+    Key: imageName,
+    Expires: 1000,
+    ContentType: 'image/jpeg',
+  });
+};
+
+// create routes for upload URL Images
+server.get('/get-upload-url', (req, res) => {
+  generateUploadURL()
+    .then((url) => res.status(200).json({ uploadURL: url }))
+    .catch((err) => {
+      console.error('Error generating upload code:', err);
+      return res.status(500).json({ 'error': 'Error generating upload code.' });
+    });
 });
 
 // what we want to send to the database

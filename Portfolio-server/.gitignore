@@ -23,6 +23,7 @@ dist-ssr
 *.sln
 *.sw?
 *.env
+*.rest
 
 ### AL ###
 #Template for AL projects for Dynamics 365 Business Central
