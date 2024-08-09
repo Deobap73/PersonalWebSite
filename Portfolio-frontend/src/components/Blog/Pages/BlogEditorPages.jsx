@@ -2,12 +2,20 @@
 
 import { useContext } from 'react';
 import { userContext } from '../../../contexts/context';
-import './BlogEditorPages.scss';
 import { BlogEditor } from '../blogApp/BlogEditor';
 import { BlogPublishForm } from '../blogApp/BlogPublishForm';
+import './BlogEditorPages.scss';
 
 export const BlogEditorPages = () => {
-  const { editorState, setEditorState } = useContext(userContext);
+  const { editorState, blog, setBlog } = useContext(userContext);
 
-  return <>{editorState === 'editor' ? <BlogEditor /> : <BlogPublishForm />}</>;
+  return (
+    <>
+      {editorState === 'editor' ? (
+        <BlogEditor blog={blog} setBlog={setBlog} />
+      ) : (
+        <BlogPublishForm blog={blog} setBlog={setBlog} />
+      )}
+    </>
+  );
 };

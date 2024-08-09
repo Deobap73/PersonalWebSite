@@ -43,22 +43,13 @@ export const BlogNavbar = () => {
         <Link to='/blog'>
           <img src={images.deoIconGold} alt='Circular logo with the letter D' />
         </Link>
+
         <div className='blogNavbarSearchAndNotificationIcon'>
           {/* Search box with conditional visibility */}
-          <div
-            className={`blogSearch ${
-              isMobile && !searchBoxVisibility ? 'hide' : 'show'
-            }`}>
-            <input
-              type='text'
-              placeholder='Search'
-              className='blogSearchInput'
-            />
+          <div className={`blogSearch ${isMobile && !searchBoxVisibility ? 'hide' : 'show'}`}>
+            <input type='text' placeholder='Search' className='blogSearchInput' />
             {/* Search icon with conditional click handler based on screen size */}
-            <FaSearch
-              onClick={isMobile ? toggleSearchBox : null}
-              className='BlogSearchIcon'
-            />
+            <FaSearch onClick={isMobile ? toggleSearchBox : null} className='BlogSearchIcon' />
           </div>
           {/* Conditions rendering on whether the user is logged in */}
           {userAuth?.accessToken && (
