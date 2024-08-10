@@ -14,6 +14,7 @@ function Container({ children }) {
   }, []);
 
   const [editorState, setEditorState] = useState('editor');
+  const [textEditor, setTextEditor] = useState({ isReady: false });
   const [status, setStatus] = useState('notAuthenticated');
   const [userAuth, setUserAuth] = useState({
     accessToken: null,
@@ -26,7 +27,7 @@ function Container({ children }) {
     banner: '',
     content: '',
     tags: '',
-    auther: { personal_info: {} },
+    author: { personal_info: {} },
   };
 
   const [blog, setBlog] = useState([blogStructure]);
@@ -73,6 +74,8 @@ function Container({ children }) {
         blog,
         setBlog,
         blogStructure,
+        textEditor,
+        setTextEditor,
       }}>
       {children}
     </userContext.Provider>
