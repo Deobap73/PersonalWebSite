@@ -83,13 +83,16 @@
       border: none;
 
       &::placeholder {
-        color: #cecece; /* Substitua pela cor desejada */
-        opacity: 1; /* Assegura que o placeholder seja visível */
+        color: #cecece;
+        opacity: 1;
       }
     }
   }
   .blogEditorBreak {
     width: 100%;
     margin: var(--margin-5xl) 0;
+  }
+  .blogEditorContent {
+    color: black;
   }
 }

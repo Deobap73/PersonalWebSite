@@ -1,34 +1,57 @@
 // PersonalWebSite\Portfolio-frontend\src\components\Blog\blogApp\BlogEditor.jsx
 
+import React, { useContext, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { useContext, useRef } from 'react';
 import { toast, Toaster } from 'react-hot-toast';
+import EditorJS from '@editorjs/editorjs';
+import { userContext } from '../../../contexts/context';
 import images from '../../../assets/imageIndex.js';
 import { awsUploadImage } from '../../../common/aws.jsx';
+import { tools } from './BlogTools.jsx';
 import './BlogEditor.scss';
-import { userContext } from '../../../contexts/context';
 
 export const BlogEditor = () => {
-  const nextInputRef = useRef(); // Reference to next input block/field
+  const editorRef = useRef(null);
+  const editorInstanceRef = useRef(null);
 
-  // Context access and destructuring
   const { blog, setBlog } = useContext(userContext);
-  const { title, banner, content, tags, author } = blog[0]; // Accessing the first element of the array
+  const { title, banner, content, tags, author } = blog[0];
 
+  useEffect(() => {
+    if (!editorInstanceRef.current) {
+      editorInstanceRef.current = new EditorJS({
+        holder: editorRef.current,
+        data: content || {},
+        tools: tools,
+        placeholder: "Let's write an awesome story",
+        onChange: async () => {
+          const content = await editorInstanceRef.current.save();
+          setBlog([{ ...blog[0], content }]);
+        },
+      });
+    }
+
+    return () => {
+      if (editorInstanceRef.current && typeof editorInstanceRef.current.destroy === 'function') {
+        editorInstanceRef.current.destroy();
+      }
+    };
+  }, []);
+
+  const handleTitleChange = e => {
+    const input = e.target.value;
+    setBlog([{ ...blog[0], title: input }]);
+  };
+
+  // handle title change event for blog changes that are not allowed by default
   const handleTitleKeyDown = e => {
     if (e.key === 'Enter') {
       // If the "Enter" key is pressed
       e.preventDefault(); // Prevents line breaks or submission
-      if (nextInputRef.current) {
-        nextInputRef.current.focus(); //Moves focus to the next field
+      if (editorRef.current) {
+        editorRef.current.focus(); // Moves focus to the next block, the text editor
       }
     }
-  };
-
-  const handleTitleChange = e => {
-    const input = e.target.value;
-    // Updating blog status
-    setBlog([{ ...blog[0], title: input }]);
   };
 
   const handleBannerUpload = e => {
@@ -43,8 +66,6 @@ export const BlogEditor = () => {
           if (url) {
             toast.dismiss(loadingToast);
             toast.success('Image uploaded successfully');
-
-            // Updating the blog status banner
             setBlog([{ ...blog[0], banner: url }]);
           }
         })
@@ -62,9 +83,7 @@ export const BlogEditor = () => {
         <Link to='/blog'>
           <img src={images.deoIconGold} alt='Circular logo with the letter D' />
         </Link>
-
         <p className='blogEditorTitle'> {title.length ? title : 'New Blog'}</p>
-
         <div className='blogEditorNavbarButtons'>
           <button className='blogEditorNavbarButton'>Publish</button>
           <button className='blogEditorNavbarButton blogEditorNavbarButtonDraft'>Save draft</button>
@@ -76,7 +95,7 @@ export const BlogEditor = () => {
           <div className='blogEditorBanner'>
             <label htmlFor='uploadBanner'>
               <img
-                src={banner || images.blogBanner} // Use the global state banner
+                src={banner || images.blogBanner}
                 alt='Placeholder image'
                 className='blogEditorBannerImage'
               />
@@ -92,17 +111,11 @@ export const BlogEditor = () => {
           <textarea
             placeholder='Blog Title'
             className='blogEditorTitle'
-            onKeyDown={handleTitleKeyDown}
             onChange={handleTitleChange}
-            value={title} // Synchronizing title value with global state
-          ></textarea>
-
+            onKeyDown={handleTitleKeyDown}
+            value={title}></textarea>
           <hr className='blogEditorBreak' />
-
-          <textarea
-            ref={nextInputRef} // Reference to the next field
-            placeholder='Next Block'
-            className='blogEditorContent'></textarea>
+          <div id='editorjs' ref={editorRef} className='blogEditorContent'></div>
         </div>
       </section>
     </>
