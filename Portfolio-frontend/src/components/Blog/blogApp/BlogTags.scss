@@ -1,0 +1,51 @@
+/* PersonalWebSite\Portfolio-frontend\src\components\Blog\blogApp\BlogTags.scss */
+
+@mixin resitStyleOriginal {
+  all: unset;
+  box-sizing: border-box;
+  font-size: 1rem;
+}
+
+.blogTagsContainer {
+  position: relative;
+  max-width: fit-content;
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  margin-right: 0.5rem;
+  padding-left: 1.25rem;
+  padding-right: 2.5rem; // Combining px-5 and pr-10
+  background-color: rgb(204, 204, 204);
+  border-radius: 9999px;
+  display: inline-block;
+
+  &:hover {
+    background-color: rgb(153, 201, 193); // Assuming hover opacity changes color to 50% opacity
+  }
+
+  .blogTags-Tag {
+    @include resitStyleOriginal();
+    width: fit-content; // Allows input to fit content
+    min-width: 2ch; // Sets a minimum width to prevent input from being too small
+    max-width: 8rem;
+    outline: none;
+    text-align: center;
+    box-sizing: content-box;
+  }
+
+  .blogTagsButton {
+    height: 1.5em;
+    width: 1.5em;
+    margin-top: 2px;
+    border-radius: 50%;
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+
+    .blogTagsIcon {
+      font-size: 0.875rem; // Corresponding to text-sm
+      pointer-events: none;
+    }
+  }
+}

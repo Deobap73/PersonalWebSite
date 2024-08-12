@@ -1,0 +1,140 @@
+/* PersonalWebSite\Portfolio-frontend\src\components\Blog\blogApp\BlogPublishForm.scss */
+
+@mixin resitStyleOriginal {
+  all: unset;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #e5e7eb;
+  background-color: rgb(220, 220, 220);
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+.blogPublishForm * {
+  color: black;
+}
+
+.blogPublishForm {
+  width: 100vw;
+  min-height: 100vh;
+  display: grid;
+  justify-content: center;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+
+  .blogPublishFormButton {
+    position: absolute;
+    width: 3rem;
+    height: 3rem;
+    right: 0.5rem;
+    background: none;
+    border: none;
+    z-index: 10;
+    top: 5%;
+  }
+
+  .blogPublishFormPreview {
+    max-width: 550px;
+    margin-left: auto;
+    margin-right: auto;
+
+    .blogPublishFormPreviewName {
+      color: #4b5563; // Assuming dark-grey is close to this color
+      margin-bottom: 0.25rem;
+    }
+
+    .blogPublishFormBannerContainer {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 0.5rem;
+      overflow: hidden;
+
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+
+      .blogPublishFormBanner {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        margin: 1rem;
+      }
+
+      .blogPublishFormTitle {
+        font-size: 2.25rem;
+        font-weight: 500;
+        margin-top: 0.5rem;
+        line-height: 1.25;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+
+      .blogPublishFormDescription {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        font-size: 1.25rem;
+        line-height: 1.75rem;
+        margin-top: 1rem;
+      }
+    }
+  }
+  .blogPublishFormTags {
+    margin: 0 2rem;
+    .blogPublishFormTagsTitle,
+    .blogPublishFormTagsTitleDesc {
+      color: #4b5563; // Assuming dark-grey is close to this color
+      margin-bottom: 0.5rem;
+      margin-top: 2.25rem;
+      width: 100%;
+    }
+
+    .blogPublishFormTagsInput {
+      @include resitStyleOriginal();
+    }
+
+    .blogPublishFormShortDesc,
+    .blogPublishFormShortDescTopics {
+      @include resitStyleOriginal();
+      height: 10rem;
+      line-height: 1.75rem;
+    }
+
+    .blogPublishFormShortDescCharacterLimited {
+      margin-top: 0.05rem;
+      margin-bottom: 1.5rem;
+      color: #4b5563; // Assuming dark-grey is close to this color
+      font-size: 0.875rem;
+      text-align: right;
+    }
+
+    .blogPublishFormShortTopics {
+      position: relative;
+      padding-left: 0.25rem;
+      padding-top: 0.5rem;
+      padding-bottom: 1rem;
+
+      .blogPublishFormShortTopicUnit {
+        @include resitStyleOriginal();
+        position: sticky;
+        top: 0;
+        left: 0;
+        margin-bottom: 0.75rem;
+        background-color: rgb(229, 228, 228);
+
+        &:focus {
+          background-color: rgb(229, 228, 228);
+        }
+      }
+    }
+  }
+}
+@media (min-width: 768px) {
+  .blogPublishForm {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    align-items: start;
+  }
+}

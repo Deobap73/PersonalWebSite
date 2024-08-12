@@ -1,5 +1,4 @@
 // src/contexts/globalContext.jsx
-
 import PropTypes from 'prop-types';
 import { useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -25,8 +24,9 @@ function Container({ children }) {
   const blogStructure = {
     title: '',
     banner: '',
-    content: '',
-    tags: '',
+    content: [],
+    tags: [],
+    description: '',
     author: { personal_info: {} },
   };
 
@@ -40,21 +40,22 @@ function Container({ children }) {
         setUserAuth({
           accessToken: user.accessToken,
           profile_img: user.profile_img,
+          username: user.username, // Assuming you have this field
         });
         setStatus(user.accessToken ? 'authenticated' : 'notAuthenticated');
       } catch (error) {
         console.error('Failed to parse user from session:', error);
-        setUserAuth({ accessToken: null, profile_img: null });
+        setUserAuth({ accessToken: null, profile_img: null, username: null });
         setStatus('notAuthenticated');
       }
     } else {
-      setUserAuth({ accessToken: null, profile_img: null });
+      setUserAuth({ accessToken: null, profile_img: null, username: null });
       setStatus('notAuthenticated');
     }
   }, []);
 
   const onSignOutClick = useCallback(() => {
-    setUserAuth({ accessToken: null, profile_img: null });
+    setUserAuth({ accessToken: null, profile_img: null, username: null });
     setStatus('notAuthenticated');
     sessionStorage.removeItem('user');
     navigate('/blog');
