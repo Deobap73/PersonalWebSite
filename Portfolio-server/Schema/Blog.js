@@ -1,6 +1,7 @@
 // PersonalWebSite\Portfolio-server\Schema\Blog.js
 
 import mongoose, { Schema } from 'mongoose';
+import { v4 as uuidv4 } from 'uuid'; // Import UUID for unique IDs
 
 const blogSchema = mongoose.Schema(
   {
@@ -8,6 +9,7 @@ const blogSchema = mongoose.Schema(
       type: String,
       required: true,
       unique: true,
+      default: () => uuidv4(), // Ensure unique IDs are automatically assigned
     },
     title: {
       type: String,
