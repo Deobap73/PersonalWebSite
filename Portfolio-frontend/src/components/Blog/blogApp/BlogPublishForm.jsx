@@ -1,3 +1,5 @@
+// PersonalWebSite\Portfolio-frontend\src\components\Blog\blogApp\BlogPublishForm.jsx
+
 import { userContext } from '../../../contexts/context';
 import { useContext } from 'react';
 import { Toaster, toast } from 'react-hot-toast';
@@ -10,10 +12,12 @@ export const BlogPublishForm = () => {
 
   const { blog, setBlog, setEditorState } = useContext(userContext);
 
+  // Check if blog data is available
   if (!blog || blog.length === 0) {
     return <p>No blog data available</p>;
   }
 
+  // Destructure current blog data
   const [currentBlog] = blog;
   const { banner, title, description, tags } = currentBlog;
 
@@ -21,14 +25,16 @@ export const BlogPublishForm = () => {
     setEditorState('editor');
   };
 
+  // Handle title change
   const handleBlogTitleChange = e => {
     const input = e.target.value;
-    setBlog([{ ...currentBlog, title: input }]);
+    setBlog(prevBlog => [{ ...prevBlog[0], title: input }]);
   };
 
+  // Handle description change
   const handleBlogDescriptionChange = e => {
     const input = e.target.value;
-    setBlog([{ ...currentBlog, description: input }]);
+    setBlog(prevBlog => [{ ...prevBlog[0], description: input }]);
   };
 
   const handleTitleKeyDown = e => {
@@ -37,16 +43,18 @@ export const BlogPublishForm = () => {
     }
   };
 
+  // Add tag to blog
   const handleAddTag = tag => {
     if (!tags.includes(tag)) {
-      setBlog([{ ...currentBlog, tags: [...tags, tag] }]);
+      setBlog(prevBlog => [{ ...prevBlog[0], tags: [...tags, tag] }]);
     } else {
       toast.error('Tag already exists');
     }
   };
 
+  // Remove tag from blog
   const handleRemoveTag = tagToRemove => {
-    setBlog([{ ...currentBlog, tags: tags.filter(tag => tag !== tagToRemove) }]);
+    setBlog(prevBlog => [{ ...prevBlog[0], tags: tags.filter(tag => tag !== tagToRemove) }]);
   };
 
   return (
@@ -105,6 +113,9 @@ export const BlogPublishForm = () => {
           {tags.map((tag, index) => (
             <BlogTags key={index} tag={tag} onRemove={() => handleRemoveTag(tag)} />
           ))}
+        </div>
+        <div className='blogPublishFormButtonContainer'>
+          <button className='blogPublishFormButtonPublish'>Publish</button>
         </div>
       </div>
     </section>

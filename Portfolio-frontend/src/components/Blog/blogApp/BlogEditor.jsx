@@ -64,7 +64,7 @@ export const BlogEditor = () => {
         isEditorInitialized.current = false;
       }
     };
-  }, [content, setTextEditor]);
+  }, [content, tools, setBlog]);
 
   const debounce = (func, wait) => {
     let timeout;

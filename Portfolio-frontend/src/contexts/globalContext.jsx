@@ -40,7 +40,7 @@ function Container({ children }) {
         setUserAuth({
           accessToken: user.accessToken,
           profile_img: user.profile_img,
-          username: user.username, // Assuming you have this field
+          username: user.username,
         });
         setStatus(user.accessToken ? 'authenticated' : 'notAuthenticated');
       } catch (error) {

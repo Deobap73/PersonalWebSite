@@ -2,6 +2,7 @@
 import { createContext } from 'react';
 
 // Define a default context value with empty or default states
+
 const defaultContextValue = {
   onDeoIconGold1Click: () => {},
   status: 'notAuthenticated',

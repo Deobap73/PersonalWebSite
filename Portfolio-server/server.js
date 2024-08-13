@@ -14,6 +14,7 @@ import aws from 'aws-sdk';
 
 // Importing the schemas from the Schema folder
 import User from './Schema/User.js';
+import Blog from './Schema/Blog.js';
 
 // Configure dotenv
 dotenv.config();
@@ -44,7 +45,7 @@ mongoose
   .then(() => {
     console.log('Connected to MongoDB');
   })
-  .catch((err) => {
+  .catch(err => {
     console.error('Error connecting to MongoDB:', err);
   });
 
@@ -71,15 +72,34 @@ const generateUploadURL = async () => {
 // create routes for upload URL Images
 server.get('/get-upload-url', (req, res) => {
   generateUploadURL()
-    .then((url) => res.status(200).json({ uploadURL: url }))
-    .catch((err) => {
+    .then(url => res.status(200).json({ uploadURL: url }))
+    .catch(err => {
       console.error('Error generating upload code:', err);
       return res.status(500).json({ 'error': 'Error generating upload code.' });
     });
 });
 
+// create middleware verifyJWT
+const verifyJWT = (req, res, next) => {
+  const authHeader = req.headers['authorization'];
+  const token = authHeader && authHeader.split(' ')[1];
+
+  if (!token) {
+    return res.status(404).json({ error: 'No access token found' });
+  }
+
+  jwt.verify(token, process.env.SECRET_ACCESS_KEY, (err, user) => {
+    if (err) {
+      return res.status(401).json({ error: 'Token is not valid' });
+    }
+
+    req.user = user.id;
+    next();
+  });
+};
+
 // what we want to send to the database
-const formatDataToSend = (user) => {
+const formatDataToSend = user => {
   //create an access token
   const accessToken = jwt.sign(
     { id: user._id },
@@ -96,7 +116,7 @@ const formatDataToSend = (user) => {
 };
 
 // Create username dynamically
-const generateUsername = async (email) => {
+const generateUsername = async email => {
   let username = email.split('@')[0];
 
   // Check if username already exists in the database
@@ -114,9 +134,7 @@ server.post('/signup', async (req, res) => {
   // validating the data from frontend
   if (fullname.length < 3) {
     // the fullname needs to be at least 3 characters.
-    return res
-      .status(403)
-      .json({ 'error': 'Fullname must be at least 3 characters long.' });
+    return res.status(403).json({ 'error': 'Fullname must be at least 3 characters long.' });
   }
 
   if (!email.length) {
@@ -177,7 +195,7 @@ server.post('/signin', (req, res) => {
   }
 
   User.findOne({ 'personal_info.email': email })
-    .then((user) => {
+    .then(user => {
       if (!user) {
         // User not found, send an error response
         return res.status(403).json({ error: 'Email not found' });
@@ -206,7 +224,7 @@ server.post('/signin', (req, res) => {
         });
       }
     })
-    .catch((err) => {
+    .catch(err => {
       // Handle any errors that occur during a query
       console.error(err);
       return res.status(500).json({ error: err.message });
@@ -220,7 +238,7 @@ server.post('/google-auth', async (req, res) => {
 
   getAuth()
     .verifyIdToken(access_Token)
-    .then(async (decodeUser) => {
+    .then(async decodeUser => {
       let { email, name, picture } = decodeUser;
 
       // to give a High resolution for the image of the Google user
@@ -231,10 +249,10 @@ server.post('/google-auth', async (req, res) => {
         .select(
           'personal_info.fullname personal_info.username personal_info.profile_img google_auth'
         )
-        .then((u) => {
+        .then(u => {
           return u || null;
         })
-        .catch((err) => {
+        .catch(err => {
           return res.status(500).json({ error: err.message });
         });
 
@@ -259,18 +277,77 @@ server.post('/google-auth', async (req, res) => {
 
         await user
           .save()
-          .then((u) => {
+          .then(u => {
             user = u;
             // Return user data as a response
             return res.status(200).json(user);
           })
-          .catch((error) => {
+          .catch(error => {
             return res.status(500).json({ error: error.message });
           });
       }
     });
 });
 
+// create a route to publish the blog post
+server.post('/create-blog-post', verifyJWT, (req, res) => {
+  let authorId = req.user;
+
+  let { title, banner, content, tags, description, draft } = req.body;
+
+  // validate inputs
+  if (
+    !title.length ||
+    !banner.length ||
+    !content.blocks.length ||
+    !tags.length ||
+    !description.length
+  ) {
+    return res.status(400).json({ error: 'All fields are required' });
+  }
+
+  // reassigning the content of tags to uppercase, capitalize and lowercase be recognized as the same tag
+  tags = tags.map(tag => tag.toLowerCase());
+
+  // If we have any type of character in the title that does not belong to capital A to Z or capital A to Z or 0 to 9 then they will be replaced
+  let blog_id =
+    title
+      .replace(/[^a-zA-Z0-9]/g, ' ')
+      .replace(/\s+/g, '-')
+      .trim() + nanoid();
+
+  let blog = new Blog({
+    title,
+    description,
+    banner,
+    content,
+    tags,
+    author: authorId,
+    blog_id,
+    draft: Boolean(draft),
+  });
+
+  // to save this blog data inside a database
+  blog
+    .save()
+    .then(blog => {
+      let incrementValue = draft ? 0 : 1;
+
+      return User.findByIdAndUpdate(authorId, {
+        $inc: { 'account_info.total_post': incrementValue },
+        $push: { 'blogs': blog.blog_id },
+      });
+    })
+    .then(() => {
+      return res.status(200).json({ id: blog_id });
+    })
+    .catch(err => {
+      console.error('Error in create-blog-post:', err);
+      return res.status(500).json({ error: 'An error occurred while creating the blog post' });
+    });
+});
+
+// start the server
 server.listen(PORT, () => {
   console.log('Listening on port -> ' + PORT);
 });
