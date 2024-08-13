@@ -1,4 +1,4 @@
-import { Navigate, useNavigate } from 'react-router-dom'; // Import navigation hooks
+import { useNavigate } from 'react-router-dom'; // Import navigation hooks
 import { userContext } from '../../../contexts/context'; // Import user context
 import { useContext } from 'react'; // Import useContext hook
 import { Toaster, toast } from 'react-hot-toast'; // Import notification utilities

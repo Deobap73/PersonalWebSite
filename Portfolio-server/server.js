@@ -275,18 +275,29 @@ server.post('/create-blog-post', verifyJWT, async (req, res) => {
   let { title, banner, content, tags, description, draft } = req.body;
 
   // Validate input data
-  if (
-    !title.length ||
-    !banner.length ||
-    !content.blocks.length ||
-    !tags.length ||
-    !description.length
-  ) {
-    return res.status(400).json({ error: 'All fields are required' });
+  if (!title || title.length === 0) {
+    return res.status(400).json({ error: 'You must provide a Title to save the draft' });
   }
 
-  // Convert tags to lowercase
-  tags = tags.map(tag => tag.toLowerCase());
+  // If not a draft, ensure all fields are provided
+  if (!draft) {
+    if (
+      !banner ||
+      banner.length === 0 ||
+      !content ||
+      !content.blocks ||
+      content.blocks.length === 0 ||
+      !tags ||
+      tags.length === 0 ||
+      !description ||
+      description.length === 0
+    ) {
+      return res.status(400).json({ error: 'All fields are required' });
+    }
+  }
+
+  // Ensure tags is an array and convert tags to lowercase
+  tags = Array.isArray(tags) ? tags.map(tag => tag.toLowerCase()) : [];
 
   try {
     // Create a new blog post

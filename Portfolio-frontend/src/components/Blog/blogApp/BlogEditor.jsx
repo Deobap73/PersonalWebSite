@@ -1,9 +1,10 @@
 // PersonalWebSite\Portfolio-frontend\src\components\Blog\blogApp\BlogEditor.jsx
 
 import React, { useContext, useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast, Toaster } from 'react-hot-toast';
 import EditorJS from '@editorjs/editorjs';
+import axios from 'axios'; // Import axios for HTTP requests
 import { tools } from './BlogTools.jsx';
 import { userContext } from '../../../contexts/context';
 import images from '../../../assets/imageIndex.js';
@@ -14,9 +15,18 @@ export const BlogEditor = () => {
   const editorRef = useRef(null);
   const editorInstanceRef = useRef(null);
   const isEditorInitialized = useRef(false);
-  const { blog, setBlog, setTextEditor, setEditorState } = useContext(userContext);
+  const {
+    blog,
+    setBlog,
+    textEditor,
+    setTextEditor,
+    setEditorState,
+    userAuth: { accessToken },
+  } = useContext(userContext);
   const [localTitle, setLocalTitle] = useState(blog[0]?.title || '');
   const { banner, content } = blog[0];
+
+  let navigate = useNavigate();
 
   useEffect(() => {
     setLocalTitle(blog[0]?.title || '');
@@ -29,15 +39,7 @@ export const BlogEditor = () => {
         data: content || {},
         tools: tools,
         placeholder: "Let's write an awesome story",
-        onChange: debounce(async () => {
-          try {
-            const content = await editor.save();
-            console.log('Editor content onChange:', content);
-            setBlog(prevBlog => [{ ...prevBlog[0], content }]);
-          } catch (error) {
-            console.error('Failed to save EditorJS content:', error);
-          }
-        }, 300),
+
         onReady: () => {
           console.log('Editor.js is ready to work!');
           isEditorInitialized.current = true;
@@ -65,18 +67,6 @@ export const BlogEditor = () => {
       }
     };
   }, [content, tools, setBlog]);
-
-  const debounce = (func, wait) => {
-    let timeout;
-    return function executedFunction(...args) {
-      const later = () => {
-        clearTimeout(timeout);
-        func(...args);
-      };
-      clearTimeout(timeout);
-      timeout = setTimeout(later, wait);
-    };
-  };
 
   const handleTitleChange = e => {
     const input = e.target.value;
@@ -152,6 +142,63 @@ export const BlogEditor = () => {
     }
   };
 
+  // Create the handleSaveDraft function to save the draft
+  const handleSaveDraft = async e => {
+    // Check if the button is disabled
+    if (e.target.className.includes('disabled')) {
+      return; // Return if the button is disabled
+    }
+
+    // Validate the title before saving as a draft
+    if (!localTitle.length) {
+      return toast.error('Write blog title before saving it as a draft'); // Show error if title is missing
+    }
+
+    // Show loading toast
+    const loadingToast = toast.loading('Saving Draft...');
+
+    // Disable the draft button
+    e.target.classList.add('disabled');
+
+    try {
+      // Check if the editor is ready
+      if (textEditor.isReady) {
+        // Get the content from the editor
+        const content = await textEditor.editor.save();
+
+        // Create the blog draft object to send to the server
+        const blogObject = {
+          title: localTitle,
+          banner,
+          content,
+          draft: true, // Indicate that this is a draft
+        };
+
+        // Send POST request to create a new draft blog post
+        await axios.post(`${import.meta.env.VITE_SERVER_DOMAIN}/create-blog-post`, blogObject, {
+          headers: {
+            'Authorization': `Bearer ${accessToken}`, // Include authentication token
+          },
+        });
+
+        // On successful response
+        e.target.classList.remove('disabled'); // Re-enable the button
+        toast.dismiss(loadingToast); // Dismiss the loading toast
+        toast.success('Save 👌'); // Show success toast
+
+        // Redirect to the blog page after a short delay
+        setTimeout(() => {
+          navigate('/blog');
+        }, 500);
+      }
+    } catch (error) {
+      // On error response
+      e.target.classList.remove('disabled'); // Re-enable the button
+      toast.dismiss(loadingToast); // Dismiss the loading toast
+      toast.error(error.response?.data?.error || 'An error occurred'); // Show error toast
+    }
+  };
+
   return (
     <>
       <nav className='blogEditorNavbar'>
@@ -163,7 +210,11 @@ export const BlogEditor = () => {
           <button className='blogEditorNavbarButton' onClick={handlePublishEvent}>
             Publish
           </button>
-          <button className='blogEditorNavbarButton blogEditorNavbarButtonDraft'>Save draft</button>
+          <button
+            className='blogEditorNavbarButton blogEditorNavbarButtonDraft'
+            onClick={handleSaveDraft}>
+            Save draft
+          </button>
         </div>
       </nav>
       <Toaster />
