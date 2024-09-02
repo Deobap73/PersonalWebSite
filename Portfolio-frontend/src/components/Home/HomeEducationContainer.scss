@@ -41,34 +41,23 @@
       height: auto;
       overflow: hidden;
       .educationsLoganTitle {
-        font-size: clamp(
-          var(--font-size-3xs),
-          1vw + 1rem,
-          var(--font-size-25xl)
-        );
+        font-size: clamp(var(--font-size-3xs), 1vw + 1rem, var(--font-size-25xl));
         .my-education {
           margin: 0;
           width: 15rem;
           font-size: inherit;
           font-weight: 700;
           font-family: var(--font-cormorant-garamond);
-          background: linear-gradient(
-            180deg,
-            rgba(192, 173, 90, 0.87),
-            #b98e53
-          );
+          background: linear-gradient(180deg, rgba(192, 173, 90, 0.87), #b98e53);
           -webkit-text-fill-color: transparent;
           background-clip: text;
           -webkit-text-stroke: 1px transparent;
         }
       }
       .my-training-in-container {
+        max-width: 80%;
         width: 100%;
-        font-size: clamp(
-          var(--font-size-base),
-          0.5vw + 1rem,
-          var(--font-size-xl)
-        );
+        font-size: clamp(var(--font-size-base), 0.5vw + 1rem, var(--font-size-xl));
         padding-right: min(4vh);
 
         .my-training-in {

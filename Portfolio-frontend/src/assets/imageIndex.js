@@ -23,6 +23,7 @@ import experienceboxleftProblemSolving from './experienceboxleftProblemSolving.w
 import ExpressJSLogo from './ExpressJSLogo.webp';
 import external from './external.webp';
 import figma from './figma.svg';
+import FoundationsOfProjectManagementCertificate from './FoundationsOfProjectManagementCertificate.webp';
 import git from './git.svg';
 import github from './github.svg';
 import githubRound from './githubRound.svg';
@@ -99,6 +100,7 @@ const images = {
   ExpressJSLogo,
   external,
   figma,
+  FoundationsOfProjectManagementCertificate,
   git,
   github,
   githubRound,
