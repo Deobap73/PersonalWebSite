@@ -24,23 +24,19 @@ const AboutMe = () => {
           property='og:description'
           content='Learn more about Deolindo Baptista, a Junior Full Stack Web Developer with a passion for building exceptional web applications.'
         />
-        <meta
-          property='og:url'
-          content='https://deolindobaptista.com/about-me'
-        />
+        <meta property='og:url' content='https://deolindobaptista.com/about-me' />
         <meta property='og:type' content='website' />
       </Helmet>
-      <header
-        className='aboutMePresentationName'
-        data-scroll-to='aboutMePresentationName'>
+      <header className='aboutMePresentationName' data-scroll-to='aboutMePresentationName'>
         <h1 className='deolindo-baptista1'>
           <span>{`Hi, I am `}</span>
           <span className='deolindo-baptista2'>Deolindo Baptista</span>
         </h1>
         <p className='as-a-junior'>
-          My journey as a Junior Full Stack Web Developer is marked by
-          resilience, constant learning, and an unwavering passion for building
-          exceptional web applications.
+          My journey as a project manager and Full Stack Web Developer is marked by resilience,
+          constant learning, and an unwavering passion for building exceptional web applications and
+          gaining the skills to lead teams and drive successful projects from initiation to
+          completion
         </p>
       </header>
       <AboutMeMain />

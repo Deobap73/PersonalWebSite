@@ -51,6 +51,16 @@ const HomeEducationContainer = () => {
           />
           <img
             className='screenshot-diploma'
+            alt='Project Initiation: Starting a Successful Project Certificate from Google'
+            src={images.ProjectInitiationStartingSuccessfulProjectCertificate}
+          />
+          <img
+            className='screenshot-diploma'
+            alt='Project Planning: Putting It All Together Certificate from Google'
+            src={images.ProjectPlanningPuttingItAllTogetherCertificate}
+          />
+          <img
+            className='screenshot-diploma'
             alt='Diploma JavaScript'
             src={images.DiplomaJavaScript}
           />

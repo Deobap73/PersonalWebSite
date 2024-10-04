@@ -71,13 +71,20 @@
       flex-wrap: wrap;
       align-items: flex-start;
       justify-content: space-evenly;
-      gap: var(--gap-20xl) 0;
+      gap: var(--gap-20xl);
       margin: var(--margin-31xl) 0;
       .screenshot-diploma {
         width: 14.375rem;
         position: relative;
         height: 11.313rem;
         object-fit: cover;
+        transition: transform 0.5s ease-in-out, width 0.3s ease-in-out, height 0.3s ease-in-out;
+        &:hover {
+          transform: scale(1.2);
+          width: 35vw;
+          height: auto;
+          z-index: 10;
+        }
       }
     }
   }

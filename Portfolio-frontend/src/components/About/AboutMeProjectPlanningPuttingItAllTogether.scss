@@ -1,0 +1,128 @@
+/* PersonalWebSite\Portfolio-frontend\src\components\About\AboutMeProjectPlanningPuttingItAllTogether.scss */
+
+.aboutMeProjectPlanningPuttingBox {
+  position: absolute;
+  top: 67.688rem;
+
+  max-width: 50.938rem;
+  width: 100%;
+  height: 16.625rem;
+  text-align: center;
+  font-size: var(--font-size-5xl);
+  color: var(--color-white);
+  font-family: var(--font-cormorant-garamond);
+  z-index: 10;
+
+  .aboutMeProjectPlanningPuttingBox-child {
+    position: absolute;
+    top: 0.063rem;
+    left: 1.625rem;
+    width: 21.063rem;
+    height: 9rem;
+    object-fit: cover;
+  }
+
+  .aboutMeProjectPlanningPuttingPlanning {
+    position: absolute;
+    top: 0.063rem;
+    left: 23.688rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 0 var(--padding-smi);
+    gap: 1.563rem 0;
+
+    .aboutMeProjectPlanningPutting {
+      margin: 0;
+      position: relative;
+      font-size: inherit;
+      font-weight: 700;
+      font-family: var(--font-cormorant-garamond);
+      background: linear-gradient(180deg, rgba(192, 173, 90, 0.87), #b98e53);
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      -webkit-text-stroke: 1px transparent;
+    }
+
+    .aboutMeProjectPlanningPutting-the-backbone {
+      position: relative;
+      display: inline-block;
+      margin-left: 1 rem;
+      max-width: 20.3rem;
+      width: 100%;
+      font-size: clamp(var(--font-size-3xs), 1vw + 0.5rem, var(--font-size-base));
+      text-align: justify;
+    }
+  }
+
+  .aboutMeProjectPlanningPuttingTimeLine {
+    position: absolute;
+    top: 10.938rem;
+    left: 6.963rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 0.125rem 0;
+    text-align: left;
+    font-size: var(--font-size-base);
+
+    .feb {
+      margin: 0;
+      position: relative;
+      font-size: inherit;
+      font-weight: 400;
+      font-family: var(--font-cormorant-garamond);
+    }
+
+    .timeline-child {
+      width: 0.375rem;
+      height: 0.375rem;
+      position: relative;
+      border-radius: 50%;
+      background: linear-gradient(180deg, rgba(192, 173, 90, 0.87), #b98e53);
+    }
+  }
+}
+
+/* Media queries */
+
+@media (max-width: 768px) {
+  .aboutMeProjectPlanningPuttingBox {
+    height: 27rem;
+
+    .aboutMeProjectPlanningPuttingBox-child {
+      top: 13.8rem;
+      left: 6.625rem;
+    }
+
+    .aboutMeProjectPlanningPuttingPlanning {
+      top: 29.063rem;
+      left: 17.688rem;
+    }
+
+    .aboutMeProjectPlanningPuttingTimeLine {
+      position: absolute;
+      top: 23.35rem;
+      left: 3.563rem;
+    }
+  }
+}
+
+@media (max-width: 650px) {
+  .aboutMeProjectPlanningPuttingBox {
+    height: 28rem;
+
+    .aboutMeProjectPlanningPuttingBox-child {
+      top: 13.8rem;
+      left: 0.625rem;
+    }
+
+    .aboutMeProjectPlanningPuttingPlanning {
+      top: 29.063rem;
+      left: 1.688rem;
+    }
+  }
+}

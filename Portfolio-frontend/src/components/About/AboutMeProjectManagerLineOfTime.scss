@@ -1,0 +1,32 @@
+/* PersonalWebSite\Portfolio-frontend\src\components\About\aboutMeProjectManagerLineOfTime.scss*/
+
+.aboutMeProjectManagerLineOfTime {
+  position: absolute;
+  width: 40.513rem;
+  height: 150.531rem;
+  margin: 0 !important;
+  top: 28.8rem;
+  left: 11rem;
+  z-index: 1;
+  .projectManagerLine-icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40.513rem;
+    height: 139.906rem;
+  }
+}
+
+/* Media queries */
+@media (max-width: 1180px) {
+  .aboutMeProjectManagerLineOfTime {
+    top: 29rem;
+    left: 11rem;
+  }
+}
+@media (max-width: 768px) {
+  .aboutMeProjectManagerLineOfTime {
+    top: 25.363rem;
+    left: -1.825rem;
+  }
+}

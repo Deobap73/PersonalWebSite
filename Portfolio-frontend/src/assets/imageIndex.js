@@ -24,6 +24,7 @@ import ExpressJSLogo from './ExpressJSLogo.webp';
 import external from './external.webp';
 import figma from './figma.svg';
 import FoundationsOfProjectManagementCertificate from './FoundationsOfProjectManagementCertificate.webp';
+import FoundationsOfProjectManagement from './FoundationsOfProjectManagement.webp';
 import git from './git.svg';
 import github from './github.svg';
 import githubRound from './githubRound.svg';
@@ -60,6 +61,11 @@ import Project1Home from './Project1Home.webp';
 import Project1HomePage from './Project1HomePage.webp';
 import ProjectAroundTheWorld from './ProjectAroundTheWorld.webp';
 import projectsbackground from './projectsbackground.webp';
+import ProjectInitiationStartingSuccessfulProject from './ProjectInitiationStartingSuccessfulProject.webp';
+import ProjectInitiationStartingSuccessfulProjectCertificate from './ProjectInitiationStartingSuccessfulProjectCertificate.webp';
+import projectManagerLine from './projectManagerLine.webp';
+import ProjectPlanningPuttingItAllTogether from './ProjectPlanningPuttingItAllTogether.webp';
+import ProjectPlanningPuttingItAllTogetherCertificate from './ProjectPlanningPuttingItAllTogetherCertificate.webp';
 import projectssubmainpresentation from './projectssubmainpresentation.webp';
 import react from './react.webp';
 import rectangleCss from './rectangle-Css.webp';
@@ -101,6 +107,7 @@ const images = {
   external,
   figma,
   FoundationsOfProjectManagementCertificate,
+  FoundationsOfProjectManagement,
   git,
   github,
   githubRound,
@@ -137,6 +144,11 @@ const images = {
   Project1HomePage,
   ProjectAroundTheWorld,
   projectsbackground,
+  ProjectInitiationStartingSuccessfulProject,
+  ProjectInitiationStartingSuccessfulProjectCertificate,
+  projectManagerLine,
+  ProjectPlanningPuttingItAllTogether,
+  ProjectPlanningPuttingItAllTogetherCertificate,
   projectssubmainpresentation,
   react,
   rectangleCss,
